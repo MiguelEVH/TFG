@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">TFG</string>
+    <string name="app_name">CrossWOD</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="signUp">Crear cuenta</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="user">Usuario</string>
+    <string name="repeatPassword">Repita la contraseña</string>
+    <string name="areYouACoach">¿Es entrenador?</string>
+    <string name="alreadyRegistered">Ya estoy registrad@</string>
+    <string name="haveYouForgotThePassword">Ha olvidado la contraseña</string>
+    <string name="areYouNew">¿Eres nuev@?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancelar</string>
+    <string name="enterEmail">Introduzca un email</string>
+    <string name="enterUser">Introduzca un usuario</string>
+    <string name="enterPassword">Introduzca una contraseña</string>
+    <string name="enterRepeatPassword">Repita la contraseña</string>
 </resources>
