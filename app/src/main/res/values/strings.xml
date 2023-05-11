@@ -10,11 +10,17 @@
     <string name="alreadyRegistered">Ya estoy registrad@</string>
     <string name="haveYouForgotThePassword">Ha olvidado la contraseña</string>
     <string name="areYouNew">¿Eres nuev@?</string>
-    <string name="yes">Yes</string>
+    <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="cancel">Cancelar</string>
-    <string name="enterEmail">Introduzca un email</string>
-    <string name="enterUser">Introduzca un usuario</string>
-    <string name="enterPassword">Introduzca una contraseña</string>
-    <string name="enterRepeatPassword">Repita la contraseña</string>
+    <string name="enterEmail">Introduzca su email</string>
+    <string name="enterUser">Introduzca su usuario</string>
+    <string name="enterPassword">Introduzca su contraseña</string>
+    <string name="enterRepeatPassword">Repita su contraseña</string>
+    <string name="resetPassword">Reestablecer contraseña</string>
+    <string name="back">Atrás</string>
+    <!-- Menu -->
+    <string name="myProfile">Mi perfil</string>
+    <string name="checkBox">Consultar box</string>
+    <string name="logOut">Cerrar sesión</string>
 </resources>

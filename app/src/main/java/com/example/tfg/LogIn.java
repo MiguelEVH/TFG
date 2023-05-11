@@ -23,7 +23,7 @@ public class LogIn extends AppCompatActivity {
 
     TextInputEditText editTextUser, editTextPassword;
     Button buttonLogIn;
-    TextView textViewAlreadyRegistered;
+    TextView textViewAlreadyRegistered, textViewForgotPassword;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
 
@@ -53,10 +53,11 @@ public class LogIn extends AppCompatActivity {
         progressBar = findViewById(R.id.progresBar);
 
         //Variables
-        editTextUser = findViewById(R.id.user);
+        editTextUser = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogIn = findViewById(R.id.btn_login);
         textViewAlreadyRegistered = findViewById(R.id.btn_areYouNew);
+        textViewForgotPassword = findViewById(R.id.btn_forgotPassword);
 
         //Go to LogIn Activity
         textViewAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
@@ -106,9 +107,17 @@ public class LogIn extends AppCompatActivity {
                                 }
                             }
                         }));
-
             }
         });
 
+        //
+        textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ResetPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

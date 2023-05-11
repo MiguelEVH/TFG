@@ -1,9 +1,14 @@
 package com.example.tfg;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Se crea la action bar
+        Toolbar toolbar = findViewById(R.id.action_bar);
+        setSupportActionBar(toolbar);
+
 
         auth = FirebaseAuth.getInstance();
         logOut = findViewById(R.id.button);
@@ -52,6 +61,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    //Se declara y crea el menú
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //Método que controla qué item se ha seleccionado del menú
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        //Comprueba qué botón se ha pulsado
+        switch(item.getItemId()){
+            case R.id.menu_my_profile:
+
+                break;
+            case R.id.menu_check_box:
+
+                break;
+            case R.id.menu_log_out:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), LogIn.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.menu_cancelar: //No hace nada.
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

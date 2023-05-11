@@ -11,7 +11,7 @@
 
     <!-- CrossWOD image -->
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/crossWOD"
         android:layout_width="313dp"
         android:layout_height="154dp"
         android:layout_marginTop="100dp"
@@ -23,18 +23,18 @@
 
     <!-- Email -->
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/user"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="75dp"
         android:backgroundTint="@color/black"
-        android:hint="@string/user"
+        android:hint="@string/email"
         android:textColor="@color/black"
         android:textColorHint="@color/grey40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/crossWOD" />
 
     <!-- Password -->
     <com.google.android.material.textfield.TextInputEditText
@@ -50,8 +50,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
+    <!-- Progress bar -->
     <ProgressBar
         android:id="@+id/progresBar"
         android:visibility="gone"
@@ -60,7 +61,7 @@
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/crossWOD" />
 
     <!-- Log in Button -->
     <Button
@@ -74,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <!-- Cancel Button -->
+    <!-- Forgot Password -->
     <TextView
         android:id="@+id/btn_forgotPassword"
         android:layout_width="200dp"
