@@ -84,58 +84,58 @@
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <!-- Role -->
+
     <TextView
         android:id="@+id/rolequestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:text="@string/areYouACoach"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repeatPassword" />
 
+
+    <!-- RadioGroup -->
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
+        android:checkedButton="@+id/rb_no"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toEndOf="@+id/rolequestion"
         app:layout_constraintTop_toBottomOf="@+id/repeatPassword">
-
-
-
-
-        <!-- Yes -->
-        <RadioButton
-            android:id="@+id/rb_yes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/black"
-            android:text="@string/yes"
-            android:textColor="@color/black" />
 
         <!-- No -->
         <RadioButton
             android:id="@+id/rb_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:buttonTint="@color/black"
             android:text="@string/no"
             android:textColor="@color/black" />
 
+        <!-- Yes -->
+        <RadioButton
+            android:id="@+id/rb_yes"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:buttonTint="@color/black"
+            android:text="@string/yes"
+            android:textColor="@color/black" />
     </RadioGroup>
 
-
-    <!-- Log in Button -->
+    <!-- Sign Up Button -->
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/button"
         android:text="@string/signUp"
@@ -143,6 +143,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
+    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progresBar"
         android:visibility="gone"
@@ -154,7 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/crossWOD" />
 
 
-    <!-- Cancel Button -->
+    <!-- Already Registered -->
     <TextView
         android:id="@+id/btn_alreadyRegistered"
         android:layout_width="200dp"

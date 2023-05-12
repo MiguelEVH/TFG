@@ -25,7 +25,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/email"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="75dp"
         android:backgroundTint="@color/black"
         android:hint="@string/email"
@@ -40,7 +40,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/black"
         android:hint="@string/password"
@@ -67,7 +67,7 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:backgroundTint="@color/button"
         android:text="@string/login"
@@ -79,15 +79,15 @@
     <TextView
         android:id="@+id/btn_forgotPassword"
         android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/button_cancel"
         android:text="@string/haveYouForgotThePassword"
-        android:textSize="16sp"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
@@ -95,8 +95,8 @@
     <TextView
         android:id="@+id/btn_areYouNew"
         android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:text="@string/areYouNew"
         android:textSize="16sp"
         android:textAlignment="center"

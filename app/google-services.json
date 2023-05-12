@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "257796010361",
+    "firebase_url": "https://tfg-crosswod-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "tfg-crosswod",
+    "storage_bucket": "tfg-crosswod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257796010361:android:fb813f516fad6fd6d0bfa8",
+        "android_client_info": {
+          "package_name": "com.example.tfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257796010361-89ersoar3t2sgd93dt4oejpk7fiu87ju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGaAQPwIcSxtrIoD_YeCrbvyUbWSTG99I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257796010361-89ersoar3t2sgd93dt4oejpk7fiu87ju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

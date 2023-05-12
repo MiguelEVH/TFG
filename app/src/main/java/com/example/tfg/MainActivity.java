@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,8 +16,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-    Button logOut;
-    TextView email;
     FirebaseUser user;
 
 
@@ -32,11 +27,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
 
-
+        //Se instancia la autenticación de Firebase
         auth = FirebaseAuth.getInstance();
-        logOut = findViewById(R.id.button);
-        email = findViewById(R.id.textView);
-
         //Coge el usuario actual
         user = auth.getCurrentUser();
 
@@ -45,22 +37,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), LogIn.class);
             startActivity(intent);
             finish();
-        }else{ //Sino, muestra su email
-            email.setText(user.getEmail());
         }
-
-
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-
-                Intent intent = new Intent(getApplicationContext(), LogIn.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
     }
 
     //Se declara y crea el menú
@@ -74,26 +51,25 @@ public class MainActivity extends AppCompatActivity {
     //Método que controla qué item se ha seleccionado del menú
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
+        Intent intent;
         //Comprueba qué botón se ha pulsado
         switch(item.getItemId()){
             case R.id.menu_my_profile:
-
+                intent = new Intent(getApplicationContext(), UserProfile.class);
+                startActivity(intent);
                 break;
             case R.id.menu_check_box:
 
                 break;
             case R.id.menu_log_out:
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), LogIn.class);
+                intent = new Intent(getApplicationContext(), LogIn.class);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.menu_cancelar: //No hace nada.
                 break;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 }

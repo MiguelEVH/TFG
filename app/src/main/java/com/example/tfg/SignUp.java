@@ -10,29 +10,41 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tfg.classes.Box;
+import com.example.tfg.classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
     TextInputEditText editTextUser, editTextEmail, editTextPassword, editTextRepeatPassword;
-    Button buttonSignUp;
+    RadioGroup radioGroup;
+    RadioButton radioButton_no;
+    Button btnSignUp;
     TextView textViewAlreadyRegistered;
-    FirebaseAuth mAuth;
     ProgressBar progressBar;
+    DatabaseReference dbUsers, dbBox;
+    FirebaseAuth auth;
+    FirebaseUser currentUser;
+    boolean isCoach;
 
     //Método que comprueba si el usuario ya ha iniciado sesión
     @Override
     public void onStart(){
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = auth.getCurrentUser();
         //Si el usuario ya ha iniciado sesión, navega a la página de inicio.
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -47,7 +59,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         //Firebase
-        mAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         //ProgressBar
         progressBar = findViewById(R.id.progresBar);
@@ -57,8 +69,15 @@ public class SignUp extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         editTextRepeatPassword = findViewById(R.id.repeatPassword);
-        buttonSignUp = findViewById(R.id.btn_signup);
+        radioGroup = findViewById(R.id.radioGroup);
+        radioButton_no = findViewById(R.id.rb_no);
+        btnSignUp = findViewById(R.id.btn_signup);
         textViewAlreadyRegistered = findViewById(R.id.btn_alreadyRegistered);
+        isCoach = false;
+
+        //Conecta con los usuarios y boxes de la base de datos
+        dbUsers = FirebaseDatabase.getInstance().getReference("Users");
+        dbBox = FirebaseDatabase.getInstance().getReference("Boxes");
 
         //Go to LogIn Activity
         textViewAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
@@ -70,22 +89,39 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        //Comprueba si el usuario selecciona si es entrenador o no
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rb_no:
+                        isCoach = false;
+                        break;
+                    case R.id.rb_yes:
+                        isCoach = true;
+                        break;
+                }
+            }
+        });
+
         //Sign up button listener
-        buttonSignUp.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //Muestra la progressbar
                 progressBar.setVisibility(View.VISIBLE);
 
-                String user, email, password, repeatPassword;
-                user = String.valueOf(editTextUser);
+                //Declara las variables y coge los valores del formulario
+                String username, email, password, repeatPassword;
+
+                username = String.valueOf(editTextUser.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 repeatPassword = String.valueOf(editTextRepeatPassword.getText());
 
                 //Comprueba que se han introducido los datos requeridos
-                if(TextUtils.isEmpty(user)){
+                if(TextUtils.isEmpty(username)){
                     Toast.makeText(SignUp.this, "Introduzca un usuario", Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
@@ -105,29 +141,63 @@ public class SignUp extends AppCompatActivity {
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
-                }
-
-                if(!password.equals(repeatPassword)){
+                }else if(!password.equals(repeatPassword)){
                     Toast.makeText(SignUp.this, "Repita la contraseña corectamente", Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 }
 
-                mAuth.createUserWithEmailAndPassword(email, password)
+                //Crea el usuario mediante email y password
+                auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                //Oculta la progressbar
-                                progressBar.setVisibility(View.GONE);
-
                                 if(task.isSuccessful()){
                                     Toast.makeText(SignUp.this, "Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
+                                    //Usuario actual
+                                    currentUser = auth.getCurrentUser();
+                                    Toast.makeText(SignUp.this, currentUser.getUid(), Toast.LENGTH_SHORT).show();
+                                    //Crear el usuario
+                                    //User user = new User(username, email, isCoach, currentUser.getUid());
+                                    String boxId = currentUser.getUid() + "_box";
+                                    User user = new User(username, email, isCoach, boxId);
+                                    //Se crea el usuario en "Users"
+                                    dbUsers.child(currentUser.getUid())
+                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(SignUp.this, "Usuario creado en la BD", Toast.LENGTH_SHORT).show();
+
+                                                        if(isCoach){
+                                                            //Se crea el box
+                                                            Box box = new Box(user.getUsername()+"'s box", "Box address");
+                                                            dbBox.child(currentUser.getUid() + "_box")
+                                                                    .setValue(box);
+                                                        }
+                                                    }
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(SignUp.this, "No se ha podido crear el usuario", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+
+                                    //Oculta la progressbar
+                                    progressBar.setVisibility(View.GONE);
+
+                                    //Se crea el box y se asigna al entrenador
+
+
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }else{
+                                    //Oculta la progressbar
+                                    progressBar.setVisibility(View.GONE);
                                     Toast.makeText(SignUp.this, "Ha habido un problema", Toast.LENGTH_SHORT).show();
                                 }
                             }

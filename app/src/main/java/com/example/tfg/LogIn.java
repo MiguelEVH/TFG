@@ -24,14 +24,14 @@ public class LogIn extends AppCompatActivity {
     TextInputEditText editTextUser, editTextPassword;
     Button buttonLogIn;
     TextView textViewAlreadyRegistered, textViewForgotPassword;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
     ProgressBar progressBar;
 
     //Método que comprueba si el usuario ya ha iniciado sesión
     @Override
     public void onStart(){
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = auth.getCurrentUser();
         //Si el usuario ya ha iniciado sesión, navega a la página de inicio.
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -47,7 +47,7 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         //Firebase
-        mAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         //ProgressBar
         progressBar = findViewById(R.id.progresBar);
@@ -89,7 +89,7 @@ public class LogIn extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
+                auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener((new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {

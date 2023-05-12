@@ -19,7 +19,7 @@ public class ResetPassword extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     EditText editTextEmail;
-    Button btn_resetPassword, btn_back;
+    Button btnResetPassword, btnBack;
     ProgressBar progressBar;
 
     @Override
@@ -29,15 +29,15 @@ public class ResetPassword extends AppCompatActivity {
 
         //Variables
         editTextEmail = findViewById(R.id.email);
-        btn_resetPassword = findViewById(R.id.btn_resetPassword);
-        btn_back = findViewById(R.id.btn_back);
+        btnResetPassword = findViewById(R.id.btn_resetPassword);
+        btnBack = findViewById(R.id.btn_back);
         //Instancia de firebase
         mAuth = FirebaseAuth.getInstance();
         //ProgressBar
         progressBar = findViewById(R.id.progresBar);
 
         //Listener que resetea la contraseña
-        btn_resetPassword.setOnClickListener(new View.OnClickListener() {
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -71,8 +71,8 @@ public class ResetPassword extends AppCompatActivity {
             }
         });
 
-        //Listener que resetea la contraseña
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        //Listener que vuelve a la pantalla de login
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), LogIn.class);

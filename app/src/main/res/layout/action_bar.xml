@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:background="@color/background_variant">
+
+    <!-- ActionBar Title -->
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ActionBar"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <!-- Icon CrossWOD -->
+    <ImageView
+        android:id="@+id/toolbar_CrossWODicon"
+        android:gravity="left"
+        android:layout_width="match_parent"
+        android:layout_height="20sp"
+        android:src="@mipmap/ic_launcher" />
 
 </androidx.appcompat.widget.Toolbar>

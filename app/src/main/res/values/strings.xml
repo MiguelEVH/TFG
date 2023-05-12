@@ -23,4 +23,19 @@
     <string name="myProfile">Mi perfil</string>
     <string name="checkBox">Consultar box</string>
     <string name="logOut">Cerrar sesión</string>
+    <string name="boxAddress">Dirección del box</string>
+    <!-- Inicio -->
+    <string name="manageBox">Gestionar box</string>
+    <string name="checkWod">Ver WOD</string>
+    <string name="reservations">Reservations</string>
+    <string name="personalBest">Marcas personales</string>
+    <string name="tutorials">Tutoriales</string>
+    <!-- Profile -->
+    <string name="profile_title">Perfil</string>
+    <string name="profile_user">Usuario:</string>
+    <string name="profile_email">Email:</string>
+    <string name="profile_box">Box:</string>
+    <string name="profile_contractedClasses">Clases semanales contratadas:</string>
+    <string name="profile_availableClasses">Clases semanales disponibles:</string>
+
 </resources>
