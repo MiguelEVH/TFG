@@ -1,12 +1,16 @@
 package com.example.tfg;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +31,13 @@ import com.google.firebase.database.ValueEventListener;
 public class UserProfile extends AppCompatActivity {
 
     Toolbar toolbar;
-    TextView toolbarTitle, user, email, box, contractedClasses, availableClasses;
+    TextView toolbarTitle, email, box, contractedClasses, availableClasses;
+    EditText user;
     Button btnBack;
-    FirebaseAuth auth;
+    ImageButton btnEditUsername, btnSaveUsername;
+    FirebaseAuth fbAuth;
     FirebaseUser fbUser;
-    DatabaseReference dbUsers, dbBox;
+    DatabaseReference dbReference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,17 +54,19 @@ public class UserProfile extends AppCompatActivity {
         toolbar.setLogo(R.mipmap.ic_launcher);
 
         //Variables
-        user = findViewById(R.id.profile_user_data);
+        user = findViewById(R.id.profile_username);
         email = findViewById(R.id.profile_email_data);
         box = findViewById(R.id.profile_box_data);
         contractedClasses = findViewById(R.id.profile_contractedClasses_data);
         availableClasses = findViewById(R.id.profile_availableClasses_data);
-        btnBack = findViewById(R.id.btn_profile_back);
+        btnBack = findViewById(R.id.profile_btn_back);
+        btnEditUsername = findViewById(R.id.profile_btn_username_edit);
+        btnSaveUsername = findViewById(R.id.profile_btn_username_save);
 
         //Se instancia la autenticación de Firebase
-        auth = FirebaseAuth.getInstance();
+        fbAuth = FirebaseAuth.getInstance();
         //Coge el usuario actual
-        fbUser = auth.getCurrentUser();
+        fbUser = fbAuth.getCurrentUser();
 
         //Si no hay un usuario con sesión iniciada, vuelve a la pantalla de login.
         if(fbUser == null){
@@ -68,8 +76,8 @@ public class UserProfile extends AppCompatActivity {
         }
 
         //Recupera los datos del usuario actual
-        dbUsers = FirebaseDatabase.getInstance().getReference("Users/"+fbUser.getUid());
-        dbUsers.addValueEventListener(new ValueEventListener() {
+        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+fbUser.getUid());
+        dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User currentUser = snapshot.getValue(User.class);
@@ -87,13 +95,15 @@ public class UserProfile extends AppCompatActivity {
         });
 
         //Recupera el nombre del box
-        String test = "Boxes/"+fbUser.getUid()+"_box";
-        dbBox = FirebaseDatabase.getInstance().getReference(test);
-        dbBox.addValueEventListener(new ValueEventListener() {
+        dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+fbUser.getUid()+"_box");
+        dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Box dbBox = snapshot.getValue(Box.class);
-                box.setText(dbBox.getName());
+                //Si el usuario está adscrito a un box, lo muestra
+                if(dbBox != null){
+                    box.setText(dbBox.getName());
+                }
             }
 
             @Override
@@ -101,45 +111,40 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-        //Listener que vuelve a la pantalla de login
+        //Listener que vuelve a la pantalla de inicio
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-    }
 
-    //Se declara y crea el menú
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+        //Listener que permite editar el nombre del usuario actual
+        btnEditUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Oculta el botón de editar
+                btnEditUsername.setVisibility(View.GONE);
+                //Muestra el botón de guardar
+                btnSaveUsername.setVisibility(View.VISIBLE);
+                user.setEnabled(true);
+            }
+        });
 
-    //Método que controla qué item se ha seleccionado del menú
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        //Comprueba qué botón se ha pulsado
-        switch(item.getItemId()){
-            case R.id.menu_my_profile:
-                intent = new Intent(getApplicationContext(), UserProfile.class);
-                startActivity(intent);
-                break;
-            case R.id.menu_check_box:
+        //Listener que guarda el nuevo nombre de usuario
+        btnSaveUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Oculta el botón de guardar
+                btnSaveUsername.setVisibility(View.GONE);
+                //Muestra el botón de editar
+                btnEditUsername.setVisibility(View.VISIBLE);
+                user.setEnabled(false);
+                //Se modifica el nuevo nombre de usuario en la base de datos
+                dbReference = FirebaseDatabase.getInstance().getReference("Users");
+                dbReference.child(fbUser.getUid()).child("username").setValue(String.valueOf(user.getText()));
+            }
+        });
 
-                break;
-            case R.id.menu_log_out:
-                FirebaseAuth.getInstance().signOut();
-                intent = new Intent(getApplicationContext(), LogIn.class);
-                startActivity(intent);
-                finish();
-                break;
-            case R.id.menu_cancelar: //No hace nada.
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

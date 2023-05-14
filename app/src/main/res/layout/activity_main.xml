@@ -26,63 +26,63 @@
         app:srcCompat="@drawable/logo_apaisado" />
 
     <Button
-        android:id="@+id/btn_manageBox"
+        android:id="@+id/main_btn_manageBox"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/button"
-        android:text="@string/manageBox"
+        android:text="@string/main_manageBox"
+        app:layout_constraintBottom_toTopOf="@+id/main_btn_checkWod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crossWOD" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_checkWod"
+        android:id="@+id/main_btn_checkWod"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/button"
-        android:text="@string/checkWod"
+        android:text="@string/main_checkWod"
+        app:layout_constraintBottom_toTopOf="@+id/main_btn_reservations"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_manageBox" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_reservations"
+        android:id="@+id/main_btn_reservations"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/button"
-        android:text="@string/reservations"
+        android:text="@string/main_reservations"
+        app:layout_constraintBottom_toTopOf="@+id/main_btn_personalBest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_checkWod" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_personalBest"
+        android:id="@+id/main_btn_personalBest"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/button"
-        android:text="@string/personalBest"
+        android:text="@string/main_personalBest"
+        app:layout_constraintBottom_toTopOf="@+id/main_btn_tutorials"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_reservations" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_tutorials"
+        android:id="@+id/main_btn_tutorials"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/button"
-        android:text="@string/tutorials"
+        android:text="@string/main_tutorials"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_personalBest" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

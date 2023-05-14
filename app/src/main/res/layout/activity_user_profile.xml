@@ -10,8 +10,7 @@
     <!-- Action Bar -->
     <include
         android:id="@+id/action_bar"
-        layout="@layout/action_bar">
-    </include>
+        layout="@layout/action_bar"></include>
 
     <!-- User -->
 
@@ -20,7 +19,7 @@
         android:id="@+id/profile_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="150dp"
         android:text="@string/profile_user"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -30,25 +29,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
-    <TextView
-        android:id="@+id/profile_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/profile_box"
+    <EditText
+        android:id="@+id/profile_username"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="137dp"
+        android:backgroundTint="#00000000"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        android:text=""
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+        android:textColorHint="@color/grey40"
+        app:layout_constraintStart_toEndOf="@+id/profile_user"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:text="@string/profile_email"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -58,80 +59,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_user" />
 
-    <!-- Email -->
 
-    <!-- Email data -->
-    <TextView
-        android:id="@+id/profile_user_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="128dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_user"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
-
-    <TextView
-        android:id="@+id/profile_box_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_box"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email_data" />
-
-    <TextView
-        android:id="@+id/profile_contractedClasses_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_contractedClasses"
-        app:layout_constraintTop_toBottomOf="@+id/profile_box_data" />
-
-    <TextView
-        android:id="@+id/profile_availableClasses_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_availableClasses"
-        app:layout_constraintTop_toBottomOf="@+id/profile_contractedClasses_data" />
-
-
-    <!-- Box -->
-
-    <!-- Box data -->
-
-    <!-- Contracted Classes -->
-    <TextView
+    <EditText
         android:id="@+id/profile_email_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:enabled="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/profile_email"
-        app:layout_constraintTop_toBottomOf="@+id/profile_user_data" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_user" />
+
+    <TextView
+        android:id="@+id/profile_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/profile_box"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+
+
+    <!-- Email data -->
+
+    <EditText
+        android:id="@+id/profile_box_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:enabled="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/profile_box"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
 
     <TextView
         android:id="@+id/profile_contractedClasses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/profile_contractedClasses"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -141,14 +117,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_box" />
 
-    <!-- Contracted Classes data -->
+    <EditText
+        android:id="@+id/profile_contractedClasses_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:enabled="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/profile_contractedClasses"
+        app:layout_constraintTop_toBottomOf="@+id/profile_box" />
 
-    <!-- Available Classes -->
     <TextView
         android:id="@+id/profile_availableClasses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
         android:text="@string/profile_availableClasses"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -160,11 +147,25 @@
 
     <!-- Available Classes data -->
     <!-- Back -->
+
+    <EditText
+        android:id="@+id/profile_availableClasses_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:enabled="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/profile_availableClasses"
+        app:layout_constraintTop_toBottomOf="@+id/profile_contractedClasses" />
+
     <Button
-        android:id="@+id/btn_profile_back"
+        android:id="@+id/profile_btn_back"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/button_cancel"
         android:text="@string/back"
         android:textColor="@color/black"
@@ -172,5 +173,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/profile_btn_username_edit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="137dp"
+        android:contentDescription="EditButton"
+        app:layout_constraintStart_toEndOf="@+id/profile_username"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar"
+        tools:srcCompat="@drawable/ic_edit" />
+
+    <ImageButton
+        android:id="@+id/profile_btn_username_save"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="137dp"
+        android:contentDescription="SaveButton"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/profile_username"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar"
+        tools:srcCompat="@drawable/ic_save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

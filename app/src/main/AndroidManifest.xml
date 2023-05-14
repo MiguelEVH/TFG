@@ -14,8 +14,11 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
         <activity
+            android:name=".BoxProfile"
+            android:exported="false" />
+        <activity
             android:name=".ResetPassword"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SignUp"
             android:exported="false" />
@@ -33,7 +36,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

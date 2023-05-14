@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".BoxProfile">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"></include>
+
+    <TextView
+        android:id="@+id/profilebox_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="@string/profilebox_name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <!-- Action Bar -->
+    <EditText
+        android:id="@+id/profilebox_name_data"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="137dp"
+        android:backgroundTint="#00000000"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey40"
+        app:layout_constraintStart_toEndOf="@+id/profilebox_name"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <ImageButton
+        android:id="@+id/profilebox_btn_name_save"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="137dp"
+        android:contentDescription="SaveButton"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar"
+        tools:srcCompat="@drawable/ic_save" />
+
+    <ImageButton
+        android:id="@+id/profilebox_btn_name_edit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="137dp"
+        android:contentDescription="EditButton"
+        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar"
+        tools:srcCompat="@drawable/ic_edit" />
+
+
+    <TextView
+        android:id="@+id/profilebox_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/profilebox_address"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilebox_name" />
+
+    <EditText
+        android:id="@+id/profilebox_address_data"
+        android:layout_width="196dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00000000"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        android:lines="@integer/material_motion_duration_long_2"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey40"
+        app:layout_constraintStart_toEndOf="@+id/profilebox_address"
+        app:layout_constraintTop_toBottomOf="@+id/profilebox_name" />
+
+    <ImageButton
+        android:id="@+id/profilebox_btn_address_save"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="SaveButton"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
+        app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
+        tools:srcCompat="@drawable/ic_save" />
+
+    <ImageButton
+        android:id="@+id/profilebox_btn_address_edit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="EditButton"
+        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
+        app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
+        tools:srcCompat="@drawable/ic_edit" />
+
+
+    <Button
+        android:id="@+id/profilebox_btn_back"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/button_cancel"
+        android:text="@string/back"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

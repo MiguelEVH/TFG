@@ -13,6 +13,10 @@ public class User {
     public User() {
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     //Constructor parametrizado
     public User(String username, String email, boolean isCoach, String boxId) {
         this.username = username;

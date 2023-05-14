@@ -11,6 +11,7 @@
     <color name="background">#dbbff6</color>
     <color name="background_variant">#9540e4</color>
     <color name="background_variantDarker">#521987</color>
-    <color name="button">#e500e5</color>
+    <color name="button">#7c26cb</color>
     <color name="button_cancel">#cccccc</color>
+    <color name="hollow">#00000000</color>
 </resources>
