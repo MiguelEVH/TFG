@@ -54,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         btnPersonalBest = findViewById(R.id.main_btn_personalBest);
         btnTutorials = findViewById(R.id.main_btn_tutorials);
 
+        //Listener que hace que un usuario entrenador navegue a la activity de gestión de box
+        btnManageBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), BoxManagement.class);
+                startActivity(intent);
+            }
+        });
+
         //Botón que navega a la activity de ver el entrenamiento diario del box
         btnCheckWod.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Listener que navega a la activity de ver ejercicios tutoriales de CrossFit
+        btnTutorials.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tutorials.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     //Se declara y crea el menú

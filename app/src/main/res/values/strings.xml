@@ -44,4 +44,10 @@
     <!-- Comprobar entramiento del día -->
     <string name="checkWod_title">WOD del box</string>
     <string name="checkWod_noBox">No está adscrito a un box</string>
+    <!-- Gestión del box -->
+    <string name="boxManagement_title">Gestión del box</string>
+    <string name="boxManagement_classPlannig">Planificar clases</string>
+    <string name="boxManagement_manageCrossfiters">Gestionar crossfiteros</string>
+    <!-- Tutorials -->
+    <string name="tutorials_title">Tutoriales</string>
 </resources>
