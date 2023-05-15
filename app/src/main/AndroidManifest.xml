@@ -14,6 +14,14 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
         <activity
+            android:name=".WodTraining"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAq1u7oAGeOdgF2NH6Ck_u3xbd6SJtn5LA" />
+
+        <activity
             android:name=".BoxProfile"
             android:exported="false" />
         <activity

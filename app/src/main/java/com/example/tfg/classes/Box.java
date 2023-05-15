@@ -5,6 +5,7 @@ public class Box {
     String id;
     String name;
     String address;
+    String wod;
 
     //Constructor vacío
     public Box() {
@@ -38,5 +39,13 @@ public class Box {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getWod() {
+        return wod;
+    }
+
+    public void setWod(String wod) {
+        this.wod = wod;
     }
 }

@@ -43,6 +43,7 @@ public class UserProfile extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        Resources.Theme activityTheme = this.getTheme();
         //Se crea la action bar
         toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
@@ -127,6 +128,8 @@ public class UserProfile extends AppCompatActivity {
                 btnEditUsername.setVisibility(View.GONE);
                 //Muestra el botón de guardar
                 btnSaveUsername.setVisibility(View.VISIBLE);
+                //Oscurece el fondo del texto del WOD
+                user.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
                 user.setEnabled(true);
             }
         });
@@ -139,6 +142,7 @@ public class UserProfile extends AppCompatActivity {
                 btnSaveUsername.setVisibility(View.GONE);
                 //Muestra el botón de editar
                 btnEditUsername.setVisibility(View.VISIBLE);
+                user.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
                 user.setEnabled(false);
                 //Se modifica el nuevo nombre de usuario en la base de datos
                 dbReference = FirebaseDatabase.getInstance().getReference("Users");

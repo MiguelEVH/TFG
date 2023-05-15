@@ -35,7 +35,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="137dp"
-        android:backgroundTint="#00000000"
+        android:background="@color/hollow"
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
@@ -65,8 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginTop="20dp"
+        android:background="@color/hollow"
         android:enabled="false"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -95,8 +95,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginTop="20dp"
+        android:background="@color/hollow"
         android:enabled="false"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -122,8 +122,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginTop="20dp"
+        android:background="@color/hollow"
         android:enabled="false"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -153,8 +153,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginTop="20dp"
+        android:background="@color/hollow"
         android:enabled="false"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -180,9 +180,10 @@
         android:layout_height="55dp"
         android:layout_marginTop="137dp"
         android:contentDescription="EditButton"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profile_username"
         app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        tools:srcCompat="@drawable/ic_edit" />
+        app:srcCompat="@drawable/ic_edit"/>
 
     <ImageButton
         android:id="@+id/profile_btn_username_save"
@@ -191,8 +192,9 @@
         android:layout_marginTop="137dp"
         android:contentDescription="SaveButton"
         android:visibility="invisible"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profile_username"
         app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        tools:srcCompat="@drawable/ic_save" />
+        app:srcCompat="@drawable/ic_save"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

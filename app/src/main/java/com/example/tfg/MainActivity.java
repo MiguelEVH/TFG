@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fbAuth;
     FirebaseUser fbUser;
     DatabaseReference dbReference;
-    Button btnManageBox;
+    Button btnManageBox, btnCheckWod, btnReservations, btnPersonalBest, btnTutorials;
     TextView toolbarTitle;
 
 
@@ -42,35 +42,24 @@ public class MainActivity extends AppCompatActivity {
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.main_title);
 
-        //Se instancia la autenticación de Firebase
-        fbAuth = FirebaseAuth.getInstance();
-        //Coge el usuario actual
-        fbUser = fbAuth.getCurrentUser();
+        //Comprueba que el usuario está autenticado, sino, lo redirige a la pantalla de login
+        checkLoggedUser();
+        //Comprueba el rol y las funcionalidades que puede realizar el usuario
+        checkRol();
 
-        //Si no hay un usuario con sesión iniciada, vuelve a la pantalla de login.
-        if(fbUser == null){
-            Intent intent = new Intent(getApplicationContext(), LogIn.class);
-            startActivity(intent);
-            finish();
-        }
-
-        //Botones de la pantalla
+        //Botones de la activity
         btnManageBox = findViewById(R.id.main_btn_manageBox);
+        btnCheckWod = findViewById(R.id.main_btn_checkWod);
+        btnReservations = findViewById(R.id.main_btn_reservations);
+        btnPersonalBest = findViewById(R.id.main_btn_personalBest);
+        btnTutorials = findViewById(R.id.main_btn_tutorials);
 
-
-        //Comprueba el rol del usuario.
-        dbReference = FirebaseDatabase.getInstance().getReference("Users");
-        dbReference.addValueEventListener(new ValueEventListener() {
+        //Botón que navega a la activity de ver el entrenamiento diario del box
+        btnCheckWod.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Si no es entrenador, oculta el botón de gestionar box
-                if(!snapshot.child(fbUser.getUid()).child("coach").getValue(boolean.class)){
-                    btnManageBox.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WodTraining.class);
+                startActivity(intent);
             }
         });
     }
@@ -108,4 +97,37 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void checkLoggedUser(){
+        //Se instancia la autenticación de Firebase
+        fbAuth = FirebaseAuth.getInstance();
+        //Coge el usuario actual
+        fbUser = fbAuth.getCurrentUser();
+
+        //Si no hay un usuario con sesión iniciada, vuelve a la pantalla de login.
+        if(fbUser == null){
+            Intent intent = new Intent(getApplicationContext(), LogIn.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    //Método las funcionalidades que puede realizar el usuario según su rol
+    public void checkRol(){
+        //Comprueba el rol del usuario.
+        dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        dbReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Si no es entrenador, oculta el botón de gestionar box
+                if(!snapshot.child(fbUser.getUid()).child("coach").getValue(boolean.class)){
+                    btnManageBox.setVisibility(View.GONE);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
 }

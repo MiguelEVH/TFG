@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     tools:context=".BoxProfile">
 
@@ -32,13 +33,9 @@
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="137dp"
-        android:backgroundTint="#00000000"
-        android:ems="10"
         android:enabled="false"
-        android:inputType="textPersonName"
-        android:text=""
         android:textColor="@color/black"
-        android:textColorHint="@color/grey40"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name"
         app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
@@ -49,9 +46,10 @@
         android:layout_marginTop="137dp"
         android:contentDescription="SaveButton"
         android:visibility="invisible"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
         app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        tools:srcCompat="@drawable/ic_save" />
+        app:srcCompat="@drawable/ic_save" />
 
     <ImageButton
         android:id="@+id/profilebox_btn_name_edit"
@@ -59,16 +57,17 @@
         android:layout_height="55dp"
         android:layout_marginTop="137dp"
         android:contentDescription="EditButton"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
         app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        tools:srcCompat="@drawable/ic_edit" />
+        app:srcCompat="@drawable/ic_edit" />
 
 
     <TextView
         android:id="@+id/profilebox_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="45dp"
         android:text="@string/profilebox_address"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -84,14 +83,10 @@
         android:layout_height="90dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:backgroundTint="#00000000"
-        android:ems="10"
         android:enabled="false"
-        android:inputType="textPersonName"
-        android:lines="@integer/material_motion_duration_long_2"
-        android:text=""
+        android:inputType="textMultiLine"
         android:textColor="@color/black"
-        android:textColorHint="@color/grey40"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profilebox_address"
         app:layout_constraintTop_toBottomOf="@+id/profilebox_name" />
 
@@ -101,10 +96,11 @@
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:contentDescription="SaveButton"
+        android:background="@color/hollow"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
         app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
-        tools:srcCompat="@drawable/ic_save" />
+        app:srcCompat="@drawable/ic_save" />
 
     <ImageButton
         android:id="@+id/profilebox_btn_address_edit"
@@ -112,10 +108,27 @@
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:contentDescription="EditButton"
+        android:background="@color/hollow"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
         app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
-        tools:srcCompat="@drawable/ic_edit" />
+        app:srcCompat="@drawable/ic_edit" />
 
+
+    <fragment
+        android:id="@+id/profilebox_boxLocationMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilebox_address_data"
+        map:cameraZoom="15"
+        map:uiRotateGestures="true"
+        map:uiZoomControls="true"
+        tools:layout="@layout/action_bar" />
 
     <Button
         android:id="@+id/profilebox_btn_back"

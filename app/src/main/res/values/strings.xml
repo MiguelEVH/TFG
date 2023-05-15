@@ -28,7 +28,7 @@
     <string name="main_title">Inicio</string>
     <string name="main_manageBox">Gestionar box</string>
     <string name="main_checkWod">Ver WOD</string>
-    <string name="main_reservations">Reservations</string>
+    <string name="main_reservations">Reservas</string>
     <string name="main_personalBest">Marcas personales</string>
     <string name="main_tutorials">Tutoriales</string>
     <!-- Perfil usuario -->
@@ -41,4 +41,7 @@
     <!-- Perfil box -->
     <string name="profilebox_name">Nombre:</string>
     <string name="profilebox_address">Dirección:</string>
+    <!-- Comprobar entramiento del día -->
+    <string name="checkWod_title">WOD del box</string>
+    <string name="checkWod_noBox">No está adscrito a un box</string>
 </resources>
