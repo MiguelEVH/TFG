@@ -1,5 +1,7 @@
 package com.example.tfg.classes;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String username;
@@ -7,6 +9,7 @@ public class User {
     private boolean isCoach;
     private int fee;
     private int availableCredits;
+    private ArrayList<PersonalBestRecord> personalBestRecords;
     private String boxId;
 
     //Constructor vacío
@@ -65,5 +68,13 @@ public class User {
 
     public void setBoxId(String boxId) {
         this.boxId = boxId;
+    }
+
+    public ArrayList<PersonalBestRecord> getPersonalBestRecords() {
+        return personalBestRecords;
+    }
+
+    public void setPersonalBestRecords(ArrayList<PersonalBestRecord> crossfitPersonalBestRecords) {
+        this.personalBestRecords = personalBestRecords;
     }
 }

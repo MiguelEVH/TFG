@@ -51,8 +51,6 @@ public class UserProfile extends AppCompatActivity {
         //Se pone el título de la activity
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.profile_title);
-        //Pone el logo de la app en la toolbar
-        toolbar.setLogo(R.mipmap.ic_launcher);
 
         //Variables
         user = findViewById(R.id.profile_username);
@@ -82,7 +80,6 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User currentUser = snapshot.getValue(User.class);
-                //Toast.makeText(UserProfile.this, user.getUsername(), Toast.LENGTH_SHORT).show();
                 //Damos valor a los TextView
                 user.setText(currentUser.getUsername());
                 email.setText(currentUser.getEmail());

@@ -50,4 +50,6 @@
     <string name="boxManagement_manageCrossfiters">Gestionar crossfiteros</string>
     <!-- Tutorials -->
     <string name="tutorials_title">Tutoriales</string>
+    <!-- Personal Best -->
+    <string name="personalBest_title">Marcas personales</string>
 </resources>

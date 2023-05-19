@@ -60,8 +60,6 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
         //Se pone el título de la activity
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.profile_title);
-        //Pone el logo de la app en la toolbar
-        toolbar.setLogo(R.mipmap.ic_launcher);
 
         //Variables
         btnBack = findViewById(R.id.profilebox_btn_back);
@@ -207,15 +205,15 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             //Se cogen los datos del box
                             Box box = snapshot.getValue(Box.class);
+                            Toast.makeText(BoxProfile.this, box.getAddress(), Toast.LENGTH_SHORT).show();
                             //Se declara el mapa y se muestra la localización del box según la dirección de este
                             boxMap = googleMap;
                             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                             try {
-                                //Coge la geolocalización del box según su dirección
-                                List<Address> addressList = geocoder.getFromLocationName(String.valueOf(box.getAddress()), 1);
+                                List<Address> addressList = geocoder.getFromLocationName(box.getAddress(), 1);
                                 //Si la dirección no es válida, avisa del error
                                 if(addressList.isEmpty()){
-                                    Toast.makeText(BoxProfile.this, "Dirección no válida", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(BoxProfile.this, "No se han podido coger las coordenadas de la localización del box", Toast.LENGTH_SHORT).show();
                                 }else{
                                     //Coge las coordenadas del box
                                     LatLng boxCoordinates = new LatLng(addressList.get(0).getLatitude(), addressList.get(0).getLongitude());
@@ -238,5 +236,4 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
     }
-
 }

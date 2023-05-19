@@ -72,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Botón que navega a la activity de ver el las marcas personales del crossfitero
+        btnPersonalBest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PersonalBest.class);
+                intent.putExtra("userId", fbUser.getUid());
+                startActivity(intent);
+            }
+        });
+
         //Listener que navega a la activity de ver ejercicios tutoriales de CrossFit
         btnTutorials.setOnClickListener(new View.OnClickListener() {
             @Override

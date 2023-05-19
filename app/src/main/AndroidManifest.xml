@@ -4,6 +4,12 @@
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
+        <activity
+            android:name=".PersonalBestListView"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalBest"
+            android:exported="false" />
+        <activity
+            android:name=".TutorialsListView"
+            android:exported="false" />
+        <activity
+            android:name=".VideoPlayer"
+            android:exported="false" />
         <activity
             android:name=".Tutorials"
             android:exported="false" />

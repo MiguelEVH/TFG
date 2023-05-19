@@ -1,0 +1,127 @@
+[
+  {
+    "id": "cm_back_squat",
+    "name" : "Back Squat",
+    "url" : "QmZAiBqPvZw"
+  },
+  {
+    "id": "cm_clean",
+    "name" : "Clean",
+    "url" : "Ty14ogq_Vok"
+  },
+  {
+    "id": "cm_clean_and_jerk",
+    "name" : "Clean and Jerk",
+    "url" : "PjY1rH4_MOA"
+  },
+  {
+    "id": "cm_deadlift",
+    "name" : "Deadlift",
+    "url" : "1ZXobu7JvvE"
+  },
+  {
+    "id": "cm_dumbbell_clean",
+    "name" : "Dumbbell Clean",
+    "url" : "SYxObzJ3gn0"
+  },
+  {
+    "id": "cm_dumbbell_power_clean",
+    "name" : "Dumbbell Power Clean",
+    "url" : "viWI2rEt-HU"
+  },
+  {
+    "id": "cm_dumbbell_power_snatch",
+    "name" : "Dumbbell Power Snatch",
+    "url" : "3mlhF3dptAo"
+  },
+  {
+    "id": "cm_dumbbell_push_press",
+    "name" : "Dumbbell Push Press",
+    "url" : "4tCaD42ghlc"
+  },
+  {
+    "id": "cm_dumbbell_squat_snatch",
+    "name" : "Dumbbell Squat Snatch",
+    "url" : "etK3OPjM3S4"
+  },
+  {
+    "id": "cm_front_squat",
+    "name" : "Front Squat",
+    "url" : "uYumuL_G_V0"
+  },
+  {
+    "id": "cm_hang_clean",
+    "name" : "Hang Clean",
+    "url" : "DaKC_BEN5bk"
+  },
+  {
+    "id": "cm_hang_power_clean",
+    "name" : "Hang Power Clean",
+    "url" : "0aP3tgKZcHQ"
+  },
+  {
+    "id": "cm_hang_power_snatch",
+    "name" : "Hang Power Snatch",
+    "url" : "-mLzQdVAwlw"
+  },
+  {
+    "id": "cm_hang_snatch",
+    "name" : "Hang Snatch",
+    "url" : "IucshEToDyM"
+  },
+  {
+    "id": "cm_muscle_snatch",
+    "name" : "Muscle Snatch",
+    "url" : "bJYzOo1cNqY"
+  },
+  {
+    "id": "cm_overhead_squat",
+    "name" : "Overhead Squat",
+    "url" : "pn8mqlG0nkE"
+  },
+  {
+    "id": "cm_power_snatch",
+    "name" : "Power Snatch",
+    "url" : "TL8SMp7RdXQ"
+  },
+  {
+    "id": "cm_push_jerk",
+    "name" : "Push Jerk",
+    "url" : "VrHNJXoSyXw"
+  },
+  {
+    "id": "cm_push_press",
+    "name" : "Push Press",
+    "url" : "iaBVSJm78ko"
+  },
+  {
+    "id": "cm_shoulder_press",
+    "name" : "Shoulder Press",
+    "url" : "5yWaNOvgFCM"
+  },
+  {
+    "id": "cm_snatch",
+    "name" : "Snatch",
+    "url" : "GhxhiehJcQY"
+  },
+  {
+    "id": "cm_snatch_balance",
+    "name" : "Snatch Balance",
+    "url" : "XuFaD1sAVGI"
+  },
+  {
+    "id": "cm_sots_press",
+    "name" : "Sots Press",
+    "url" : "eJ9MLnNV6FY"
+  },
+  {
+    "id": "cm_split_jerk",
+    "name" : "Split Jerk",
+    "url" : "GUDkOtraHHY"
+  },
+  {
+    "id": "cm_sumo_deadlift",
+    "name" : "Sumo Deadlift",
+    "url" : "ENEg9UF7z7M"
+  }
+]

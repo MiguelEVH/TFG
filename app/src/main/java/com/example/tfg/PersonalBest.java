@@ -1,5 +1,6 @@
 package com.example.tfg;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -10,11 +11,21 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.tfg.classes.PersonalBestBaseAdapter;
+import com.example.tfg.classes.PersonalBestRecord;
 import com.example.tfg.classes.TutorialsBaseAdapter;
+import com.example.tfg.classes.User;
 import com.example.tfg.classes.WorkoutExercise;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,48 +36,87 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Tutorials extends AppCompatActivity {
+public class PersonalBest extends AppCompatActivity {
 
     FirebaseAuth fbAuth;
     FirebaseUser fbUser;
     TextView toolbarTitle;
     Button btnBack;
+    String userId;
     ArrayList<WorkoutExercise> workoutExercises = new ArrayList<>();
-    ListView workoutTutorialListView;
-
+    ArrayList<PersonalBestRecord> personalBestRecords = new ArrayList<>();
+    ListView personalBestListView;
+    DatabaseReference dbReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorials);
+        setContentView(R.layout.activity_personal_best);
         //Se crea la action bar
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
         toolbarTitle = findViewById(R.id.toolbar_title);
-        toolbarTitle.setText(R.string.tutorials_title);
+        toolbarTitle.setText(R.string.personalBest_title);
 
         //Comprueba que el usuario está autenticado, sino, lo redirige a la pantalla de login
         checkLoggedUser();
 
-        //Buttons
-        btnBack = findViewById(R.id.tutorials_btn_back);
+        //Se coge la id del crossfitero
+        userId = getIntent().getStringExtra("userId");
 
-        //Lee los workout tutorials del JSON
+        //Buttons
+        btnBack = findViewById(R.id.personalBest_btn_back);
+
+        //Lee los workout  del JSON
         addWorkoutTutorialsFromJSON();
         //Crea la lista de entrenamientos
-        workoutTutorialListView = findViewById(R.id.tutorials_listView);
-        TutorialsBaseAdapter customBaseAdapter = new TutorialsBaseAdapter(getApplicationContext(), workoutExercises);
-        workoutTutorialListView.setAdapter(customBaseAdapter);
+        /*
+        personalBestListView = findViewById(R.id.personalBest_listView);
+        PersonalBestBaseAdapter customBaseAdapter = new PersonalBestBaseAdapter(getApplicationContext(), workoutExercises, personalBestRecords);
+        personalBestListView.setAdapter(customBaseAdapter);
+        personalBestListView.getAdapter();
+        */
+        personalBestListView = findViewById(R.id.personalBest_listView);
 
-        //Listener que abre el videotutorial del ejercicio que seleccione el usuario
-        workoutTutorialListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+        //Recupera las marcas personales del usuario actual
+        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId+"/personalBestRecords");
+        setPersonalBestRecord("cm_deadlift", 100);
+        dbReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Se declara la marca personal
+                PersonalBestRecord personalBestRecord;
+                //Recupera las marcas personales del crossfitero
+                for(DataSnapshot child : snapshot.getChildren()){
+                    //Coge las marcas personales
+                    PersonalBestRecord record = new PersonalBestRecord();
+                    record.setId(child.getKey());
+                    record.setWeight(Long.valueOf((Long) child.getValue()).doubleValue());
+                    personalBestRecords.add(record);
+
+                }
+                //Muestra el adaptador
+                PersonalBestBaseAdapter customBaseAdapter = new PersonalBestBaseAdapter(getApplicationContext(), workoutExercises, personalBestRecords);
+                personalBestListView.setAdapter(customBaseAdapter);
+                personalBestListView.getAdapter();
+                Toast.makeText(PersonalBest.this, String.valueOf(personalBestRecords.size()), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        //Listener que abre modifica la marca personal del ejercicio seleccionado
+        personalBestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Se pasa por parámetro la url del workout tutorial y muestra el vídeo en una nueva actividad
-                Intent intent = new Intent(getApplicationContext(), VideoPlayer.class);
-                intent.putExtra("workoutUrl", workoutExercises.get(i).getUrl());
-                startActivity(intent);
+                //El peso de la marca personal
+                //Toast.makeText(PersonalBest.this, workoutExercises.get(i), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -148,5 +198,11 @@ public class Tutorials extends AppCompatActivity {
             }
         }
         return new String(stringBuilder);
+    }
+
+    public void setPersonalBestRecord(String exerciseId, double personalBestRecord){
+        //Se modifica el nuevo nombre de usuario en la base de datos
+        //dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        dbReference.child(exerciseId).setValue(personalBestRecord);
     }
 }
