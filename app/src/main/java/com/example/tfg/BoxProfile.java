@@ -48,6 +48,7 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
     FirebaseUser fbUser;
     DatabaseReference dbReference;
     GoogleMap boxMap;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,9 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
         //Se pone el título de la activity
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.profile_title);
+
+        //Se coge la id del crossfitero
+        userId = getIntent().getStringExtra("userId");
 
         //Variables
         btnBack = findViewById(R.id.profilebox_btn_back);
@@ -87,16 +91,24 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
         }
 
         //Comprueba el rol del usuario.
-        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+fbUser.getUid());
+        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //Coge los datos del usuario
-                User currentUser = snapshot.getValue(User.class);
-                //Oculta las opciones de edición si el usuario no es entrenador
-                if(!snapshot.child("coach").getValue(boolean.class)){
-                    btnEditBoxName.setVisibility(View.GONE);
-                    btnEditBoxAddress.setVisibility(View.GONE);
+                User currentUser = new User();
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    //Si es el boxId, guarda su valor
+                    if (child.getKey().equals("boxId")) {
+                        currentUser.setBoxId(String.valueOf(child.getValue()));
+                    } else if (child.getKey().equals("coach")) {
+                        //Si no es entrenador, oculta los botones de edición
+                        boolean isCoach = Boolean.valueOf(String.valueOf(child.getValue()));
+                        if (isCoach){
+                            btnEditBoxName.setVisibility(View.VISIBLE);
+                            btnEditBoxAddress.setVisibility(View.VISIBLE);
+                        }
+                    }
                 }
                 //Si el usuario tiene un box, muestra los datos de este
                 if(currentUser.getBoxId() != null){
@@ -129,7 +141,7 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                 //Muestra el botón de guardar
                 btnSaveBoxName.setVisibility(View.VISIBLE);
                 //Clarea el fondo del texto del WOD
-                boxName.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
+                boxName.setBackgroundColor(getResources().getColor(R.color.grey40, activityTheme));
                 boxName.setEnabled(true);
             }
         });
@@ -195,7 +207,14 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //Coge los datos del usuario
-                User currentUser = snapshot.getValue(User.class);
+                User currentUser = new User();
+                //Coge el boxId del usuario
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    //Si es el boxId, guarda su valor
+                    if (child.getKey().equals("boxId")) {
+                        currentUser.setBoxId(String.valueOf(child.getValue()));
+                    }
+                }
                 //Si el usuario tiene un box, coge la dirección
                 if(currentUser.getBoxId() != null){
                     //Se hace referencia al box del usuario
@@ -205,7 +224,6 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             //Se cogen los datos del box
                             Box box = snapshot.getValue(Box.class);
-                            Toast.makeText(BoxProfile.this, box.getAddress(), Toast.LENGTH_SHORT).show();
                             //Se declara el mapa y se muestra la localización del box según la dirección de este
                             boxMap = googleMap;
                             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());

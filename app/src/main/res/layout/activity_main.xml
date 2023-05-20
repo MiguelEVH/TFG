@@ -32,6 +32,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/button"
         android:text="@string/main_manageBox"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/main_btn_checkWod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

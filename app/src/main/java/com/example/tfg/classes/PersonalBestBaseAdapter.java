@@ -58,28 +58,9 @@ public class PersonalBestBaseAdapter extends BaseAdapter {
         ImageView workoutImage = (ImageView) view.findViewById(R.id.personalBest_workoutImage);
         //Da valores al item
         workoutText.setText(workoutList.get(i).getName());
-        workoutImage.setImageResource(workoutList.get(i).getImage());
+        workoutImage.setImageResource(Integer.valueOf(workoutList.get(i).getImage()) );
         //Comprueba si el usuario ha registrado una marca personal
-        weight.setText("-");
-        //Variable que comprueba si se ha encontrado la marca personal
-        boolean found = false;
-        for(int index=0;index<workoutList.size();index++){
-            //Sale de la iteración si ha encontrado la marca personal
-            if(found){
-               break;
-            }
-            //Comprueba si es el mismo ejercicio
-            for(int j=0;j<personalBestRecords.size();j++){
-                //Comprueba
-                if(personalBestRecords.get(j).getId().equals(workoutList.get(index).getId())){
-                    //Si lo es, pone el peso
-                    weight.setText(String.valueOf(personalBestRecords.get(j).getWeight()));
-                    found = true;
-                }
-                Log.i("PRUEBA", String.valueOf(workoutList.get(index).getName() + " " + String.valueOf(personalBestRecords.get(j).getWeight()) ));
-                break;
-            }
-        }
+        weight.setText(String.valueOf(personalBestRecords.get(i).getWeight())+" Kg");
         //Retorna la vista del workout
         return view;
     }

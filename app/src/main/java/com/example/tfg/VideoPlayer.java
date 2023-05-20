@@ -35,7 +35,6 @@ public class VideoPlayer extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 //Carga el vídeo
-                //youTubePlayer.loadVideo("eiexkzCI8m8");
                 youTubePlayer.loadVideo(workout);
 
                 //Reproduce el vídeo

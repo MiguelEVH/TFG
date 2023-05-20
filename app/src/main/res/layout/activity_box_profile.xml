@@ -58,6 +58,7 @@
         android:layout_marginTop="137dp"
         android:contentDescription="EditButton"
         android:background="@color/hollow"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
         app:layout_constraintTop_toBottomOf="@+id/action_bar"
         app:srcCompat="@drawable/ic_edit" />
@@ -109,6 +110,7 @@
         android:layout_marginTop="10dp"
         android:contentDescription="EditButton"
         android:background="@color/hollow"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
         app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
         app:srcCompat="@drawable/ic_edit" />

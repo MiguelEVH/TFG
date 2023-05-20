@@ -50,6 +50,13 @@
     <string name="boxManagement_manageCrossfiters">Gestionar crossfiteros</string>
     <!-- Tutorials -->
     <string name="tutorials_title">Tutoriales</string>
-    <!-- Personal Best -->
+    <!-- Personal Best & Personal Best Update -->
     <string name="personalBest_title">Marcas personales</string>
+    <string name="personalBestUpdate_rm">Repetición Máxima:</string>
+    <string name="personalBestUpdate_rmMeasure">Kg</string>
+    <!-- Box Manage Crossfiters -->
+    <string name="crossfittersManagement_title">Gestión de crossfiteros</string>
+    <string name="crossfittersManagement_addCrossfiter">Añadir crossfitero</string>
+    <!-- Class Planning -->
+    <string name="classPlanning_title">Planificar clases</string>
 </resources>

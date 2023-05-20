@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".PersonalBestUpdate">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"></include>
+
+    <TextView
+        android:id="@+id/personalBestUpdate_exerciseName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Titulo"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/personalBestUpdate_exerciseImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="450dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/personalBestUpdate_exerciseRm"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="@string/personalBestUpdate_rm"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/personalBestUpdate_exerciseRmData"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/hollow"
+            android:textSize="20sp"
+            android:enabled="false"
+            android:text=""
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey40"/>
+
+        <TextView
+            android:id="@+id/personalBestUpdate_exerciseRmMeasure"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="@string/personalBestUpdate_rmMeasure"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+        <ImageButton
+            android:id="@+id/personalBestUpdate_btn_personalBest_edit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="EditButton"
+            android:background="@color/hollow"
+            app:srcCompat="@drawable/ic_edit"/>
+
+        <ImageButton
+            android:id="@+id/personalBestUpdate_btn_personalBest_save"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="SaveButton"
+            android:visibility="gone"
+            android:background="@color/hollow"
+            app:srcCompat="@drawable/ic_save"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/personalBestUpdate_btn_back"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/button_cancel"
+        android:text="@string/back"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

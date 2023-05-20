@@ -46,6 +46,7 @@ public class PersonalBest extends AppCompatActivity {
     Button btnBack;
     String userId;
     ArrayList<WorkoutExercise> workoutExercises = new ArrayList<>();
+    ArrayList<PersonalBestRecord> personalBestRecordsAux = new ArrayList<>();
     ArrayList<PersonalBestRecord> personalBestRecords = new ArrayList<>();
     ListView personalBestListView;
     DatabaseReference dbReference;
@@ -66,25 +67,17 @@ public class PersonalBest extends AppCompatActivity {
         //Se coge la id del crossfitero
         userId = getIntent().getStringExtra("userId");
 
-        //Buttons
+        //Botón para volver a la pantalla de inicio
         btnBack = findViewById(R.id.personalBest_btn_back);
 
         //Lee los workout  del JSON
         addWorkoutTutorialsFromJSON();
-        //Crea la lista de entrenamientos
-        /*
+        //Crea la lista de marcas personales
         personalBestListView = findViewById(R.id.personalBest_listView);
-        PersonalBestBaseAdapter customBaseAdapter = new PersonalBestBaseAdapter(getApplicationContext(), workoutExercises, personalBestRecords);
-        personalBestListView.setAdapter(customBaseAdapter);
-        personalBestListView.getAdapter();
-        */
-        personalBestListView = findViewById(R.id.personalBest_listView);
-
-
 
         //Recupera las marcas personales del usuario actual
         dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId+"/personalBestRecords");
-        setPersonalBestRecord("cm_deadlift", 100);
+        //setPersonalBestRecord("cm_deadlift", 100);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -96,14 +89,40 @@ public class PersonalBest extends AppCompatActivity {
                     PersonalBestRecord record = new PersonalBestRecord();
                     record.setId(child.getKey());
                     record.setWeight(Long.valueOf((Long) child.getValue()).doubleValue());
-                    personalBestRecords.add(record);
-
+                    personalBestRecordsAux.add(record);
+                }
+                //Variable que controla si el ejercicio coincide con la id de la marca personal
+                boolean found = false;
+                //Rellena los huecos de la lista de marcas personales
+                for(int i=0;i<workoutExercises.size();i++){
+                    //Reinicia la variable que controla si se ha encontrado una marca personal
+                    found = false;
+                    //Recorre la lista de marcas personales auxiliar. Si coincide con el ejercicio de la lista actual, lo agrega a las marcas personales
+                    for(int j=0;j<personalBestRecordsAux.size();j++){
+                        //Se rellena con el valor de la key si esta coincide. Si no, se marca como vacío
+                        if (workoutExercises.get(i).getId().equals(personalBestRecordsAux.get(j).getId())){
+                            //Guarda la marca personal en la lista de marcas personales
+                            personalBestRecords.add(personalBestRecordsAux.get(j));
+                            //Se ha encontrado una marca personal
+                            found = true;
+                            //Elimina el ejercicio de la lista auxiliar
+                            personalBestRecordsAux.remove(j);
+                            break;
+                        }
+                    }
+                    //Si no se ha encontrado la marca personal, la rellena
+                    if(!found){
+                        //Coge las marcas personales
+                        PersonalBestRecord record = new PersonalBestRecord();
+                        record.setId(workoutExercises.get(i).getId());
+                        record.setWeight(0);
+                        personalBestRecords.add(record);
+                    }
                 }
                 //Muestra el adaptador
                 PersonalBestBaseAdapter customBaseAdapter = new PersonalBestBaseAdapter(getApplicationContext(), workoutExercises, personalBestRecords);
                 personalBestListView.setAdapter(customBaseAdapter);
                 personalBestListView.getAdapter();
-                Toast.makeText(PersonalBest.this, String.valueOf(personalBestRecords.size()), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -115,8 +134,16 @@ public class PersonalBest extends AppCompatActivity {
         personalBestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //El peso de la marca personal
-                //Toast.makeText(PersonalBest.this, workoutExercises.get(i), Toast.LENGTH_SHORT).show();
+                //Navega a la pantalla de actualizar la marca personal seleccionada
+                Intent intent = new Intent(getApplicationContext(), PersonalBestUpdate.class);
+                //Se le pasa el id del user, el ejercicio y la marca personal
+                intent.putExtra("userId", fbUser.getUid());
+                intent.putExtra("exerciseId", workoutExercises.get(i).getId());
+                intent.putExtra("exerciseName", workoutExercises.get(i).getName());
+                intent.putExtra("exerciseImage", workoutExercises.get(i).getImage());
+                intent.putExtra("exercisePersonalBest", personalBestRecords.get(i).getWeight());
+                startActivity(intent);
+                finish();
             }
         });
 

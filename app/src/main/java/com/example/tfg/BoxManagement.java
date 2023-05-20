@@ -22,9 +22,9 @@ public class BoxManagement extends AppCompatActivity {
 
     FirebaseAuth fbAuth;
     FirebaseUser fbUser;
-    DatabaseReference dbReference;
     Button btnClassPlanning, btnManageCrossfiters, btnBack;
     TextView toolbarTitle;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,9 @@ public class BoxManagement extends AppCompatActivity {
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.boxManagement_title);
 
+        //Se coge la id del crossfitero
+        userId = getIntent().getStringExtra("userId");
+
         //Comprueba que el usuario está autenticado, sino, lo redirige a la pantalla de login
         checkLoggedUser();
 
@@ -43,6 +46,25 @@ public class BoxManagement extends AppCompatActivity {
         btnManageCrossfiters = findViewById(R.id.boxManagement_btn_manageCrossfiters);
         btnBack = findViewById(R.id.boxManagement_btn_back);
 
+        //listener que navega a la activiad de planificar clases
+        btnClassPlanning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClassPlanning.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+            }
+        });
+
+        //Listener que navega a la activity de gestión de crossfiteros
+        btnManageCrossfiters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CrossfittersManagement.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+            }
+        });
 
         //Listener que vuelve a la pantalla de inicio
         btnBack.setOnClickListener(new View.OnClickListener() {

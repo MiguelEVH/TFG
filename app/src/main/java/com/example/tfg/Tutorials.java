@@ -79,6 +79,7 @@ public class Tutorials extends AppCompatActivity {
         });
     }
 
+    //Método que comprueba si el usuario está logueado. Si no, lo manda a la pantalla de Login
     public void checkLoggedUser(){
         //Se instancia la autenticación de Firebase
         fbAuth = FirebaseAuth.getInstance();

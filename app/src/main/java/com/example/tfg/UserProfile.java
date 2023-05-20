@@ -38,6 +38,7 @@ public class UserProfile extends AppCompatActivity {
     FirebaseAuth fbAuth;
     FirebaseUser fbUser;
     DatabaseReference dbReference;
+    String userId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,9 @@ public class UserProfile extends AppCompatActivity {
         //Se crea la action bar
         toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
+
+        //Se coge la id del crossfitero
+        userId = getIntent().getStringExtra("userId");
 
         //Se pone el título de la activity
         toolbarTitle = findViewById(R.id.toolbar_title);
@@ -75,11 +79,25 @@ public class UserProfile extends AppCompatActivity {
         }
 
         //Recupera los datos del usuario actual
-        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+fbUser.getUid());
+        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User currentUser = snapshot.getValue(User.class);
+
+                //Coge los datos del usuario
+                User currentUser = new User();
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    //Si es el boxId, guarda su valor
+                    if (child.getKey().equals("username")) {
+                        currentUser.setUsername(String.valueOf(child.getValue()));
+                    } else if (child.getKey().equals("email")) {
+                        currentUser.setEmail(String.valueOf(child.getValue()));
+                    } else if (child.getKey().equals("availableCredits")) {
+                        currentUser.setAvailableCredits(Integer.valueOf(String.valueOf(child.getValue())));
+                    } else if (child.getKey().equals("fee")) {
+                        currentUser.setFee(Integer.valueOf(String.valueOf(child.getValue())));
+                    }
+                }
                 //Damos valor a los TextView
                 user.setText(currentUser.getUsername());
                 email.setText(currentUser.getEmail());
@@ -93,7 +111,7 @@ public class UserProfile extends AppCompatActivity {
         });
 
         //Recupera el nombre del box
-        dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+fbUser.getUid()+"_box");
+        dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+userId+"_box");
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -126,7 +144,7 @@ public class UserProfile extends AppCompatActivity {
                 //Muestra el botón de guardar
                 btnSaveUsername.setVisibility(View.VISIBLE);
                 //Oscurece el fondo del texto del WOD
-                user.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
+                user.setBackgroundColor(getResources().getColor(R.color.grey40, activityTheme));
                 user.setEnabled(true);
             }
         });
@@ -143,7 +161,7 @@ public class UserProfile extends AppCompatActivity {
                 user.setEnabled(false);
                 //Se modifica el nuevo nombre de usuario en la base de datos
                 dbReference = FirebaseDatabase.getInstance().getReference("Users");
-                dbReference.child(fbUser.getUid()).child("username").setValue(String.valueOf(user.getText()));
+                dbReference.child(userId).child("username").setValue(String.valueOf(user.getText()));
             }
         });
 

@@ -41,6 +41,7 @@ public class WodTraining extends AppCompatActivity {
     TextView toolbarTitle;
     EditText wodText;
     Button btnBack;
+    String userId;
     ImageButton btnEdit, btnSave;
 
     @Override
@@ -54,6 +55,9 @@ public class WodTraining extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.checkWod_title);
+
+        //Se coge la id del crossfitero
+        userId = getIntent().getStringExtra("userId");
 
         //Comprueba que el usuario está autenticado, sino, lo redirige a la pantalla de login
         checkLoggedUser();
@@ -70,32 +74,37 @@ public class WodTraining extends AppCompatActivity {
         wodText.setEnabled(false);
 
         //Muestra el entrenamiento del día. Para ello, primero comprueba si el usuario tiene box
-        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+fbUser.getUid());
+        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Coge los datos del usuario
-                User currentUser = snapshot.getValue(User.class);
-                //Si el usuario tiene un box, coge la dirección
-                if(currentUser.getBoxId() != null){
-                    //Se hace referencia al box del usuario
-                    dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
-                    dbReference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //Se cogen los datos del box
-                            Box box = snapshot.getValue(Box.class);
-                            if(box.getWod() != null){
-                                wodText.setText(box.getWod());
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    //Coge los datos del usuario
+                    User currentUser = new User();
+                    if(child.getKey().equals("boxId")){
+                        currentUser.setBoxId(String.valueOf(child.getValue()));
+                    }
+                    //Si el usuario tiene un box, coge la dirección
+                    if(currentUser.getBoxId() != null){
+                        //Se hace referencia al box del usuario
+                        dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
+                        dbReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                //Se cogen los datos del box
+                                Box box = snapshot.getValue(Box.class);
+                                if(box.getWod() != null){
+                                    wodText.setText(box.getWod());
+                                }
                             }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
-                }else{
-                    //Si no tiene box, muestra el mensaje
-                    wodText.setText(getResources().getText(R.string.checkWod_noBox));
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                    }else{
+                        //Si no tiene box, muestra el mensaje
+                        wodText.setText(getResources().getText(R.string.checkWod_noBox));
+                    }
                 }
             }
             @Override
@@ -122,22 +131,9 @@ public class WodTraining extends AppCompatActivity {
                 wodText.setBackgroundColor(getResources().getColor(R.color.darkGrey, activityTheme));
                 //El texto deja de poder ser editable
                 wodText.setEnabled(false);
-
-                //Modifica el entrenamiento del día
-                dbReference = FirebaseDatabase.getInstance().getReference("Users/"+fbUser.getUid());
-                dbReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //Coge los datos del usuario
-                        User currentUser = snapshot.getValue(User.class);
-                        //Se modifica el nuevo nombre de usuario en la base de datos
-                        dbReference = FirebaseDatabase.getInstance().getReference("Boxes");
-                        dbReference.child(fbUser.getUid()+"_box").child("wod").setValue(String.valueOf(wodText.getText()));
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
+                //Actualiza el entrenamiento del día
+                dbReference = FirebaseDatabase.getInstance().getReference("Boxes");
+                dbReference.child(userId+"_box").child("wod").setValue(String.valueOf(wodText.getText()));
             }
         });
 

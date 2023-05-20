@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnManageBox, btnCheckWod, btnReservations, btnPersonalBest, btnTutorials;
     TextView toolbarTitle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), BoxManagement.class);
+                intent.putExtra("userId", fbUser.getUid());
                 startActivity(intent);
             }
         });
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WodTraining.class);
+                intent.putExtra("userId", fbUser.getUid());
                 startActivity(intent);
             }
         });
@@ -109,10 +110,12 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.menu_my_profile:
                 intent = new Intent(getApplicationContext(), UserProfile.class);
+                intent.putExtra("userId", fbUser.getUid());
                 startActivity(intent);
                 break;
             case R.id.menu_check_box:
                 intent = new Intent(getApplicationContext(), BoxProfile.class);
+                intent.putExtra("userId", fbUser.getUid());
                 startActivity(intent);
                 break;
             case R.id.menu_log_out:
@@ -148,9 +151,9 @@ public class MainActivity extends AppCompatActivity {
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Si no es entrenador, oculta el botón de gestionar box
-                if(!snapshot.child(fbUser.getUid()).child("coach").getValue(boolean.class)){
-                    btnManageBox.setVisibility(View.GONE);
+                //Si es entrenador, muestra el botón de gestionar box
+                if(snapshot.child(fbUser.getUid()).child("coach").getValue(boolean.class)){
+                    btnManageBox.setVisibility(View.VISIBLE);
                 }
             }
             @Override
