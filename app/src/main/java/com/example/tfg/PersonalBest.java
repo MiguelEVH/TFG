@@ -81,8 +81,6 @@ public class PersonalBest extends AppCompatActivity {
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Se declara la marca personal
-                PersonalBestRecord personalBestRecord;
                 //Recupera las marcas personales del crossfitero
                 for(DataSnapshot child : snapshot.getChildren()){
                     //Coge las marcas personales

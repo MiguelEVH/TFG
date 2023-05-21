@@ -11,6 +11,27 @@
         android:id="@+id/action_bar"
         layout="@layout/action_bar"></include>
 
+    <ListView
+        android:id="@+id/crossfittersManagement_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="260dp"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <EditText
+        android:id="@+id/crossfittersManagement_newUser"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="190dp"
+        android:backgroundTint="@color/black"
+        android:hint="@string/crossfittersManagement_newUserEmail"
+        android:textColorHint="@color/grey40"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/crossfittersManagement_btn_addCrossfitter"

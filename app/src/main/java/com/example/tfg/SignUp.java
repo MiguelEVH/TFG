@@ -27,6 +27,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SignUp extends AppCompatActivity {
 
     TextInputEditText editTextUser, editTextEmail, editTextPassword, editTextRepeatPassword;
@@ -121,12 +124,12 @@ public class SignUp extends AppCompatActivity {
                 repeatPassword = String.valueOf(editTextRepeatPassword.getText());
 
                 //Comprueba que se han introducido los datos requeridos
-                if(TextUtils.isEmpty(username)){
+                if(!userEnteredCorrectly(username)){
                     Toast.makeText(SignUp.this, "Introduzca un usuario", Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
-                }else if(TextUtils.isEmpty(email)){
+                }else if(!emailEnteredCorrectly(email)){
                     Toast.makeText(SignUp.this, "Introduzca un email", Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
@@ -141,12 +144,13 @@ public class SignUp extends AppCompatActivity {
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
-                }else if(!password.equals(repeatPassword)){
-                    Toast.makeText(SignUp.this, "Repita la contraseña corectamente", Toast.LENGTH_SHORT).show();
+                }else if(!validPassword(password, repeatPassword)){
+                    Toast.makeText(SignUp.this, "Repita la contraseña correctamente", Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 }
+
 
                 //Crea el usuario mediante email y password
                 auth.createUserWithEmailAndPassword(email, password)
@@ -158,10 +162,12 @@ public class SignUp extends AppCompatActivity {
                                     Toast.makeText(SignUp.this, "Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
                                     //Usuario actual
                                     currentUser = auth.getCurrentUser();
-                                    Toast.makeText(SignUp.this, currentUser.getUid(), Toast.LENGTH_SHORT).show();
-                                    //Crear el usuario
-                                    //User user = new User(username, email, isCoach, currentUser.getUid());
-                                    String boxId = currentUser.getUid() + "_box";
+                                    //Si es entrenador, le asigna un box que se creará posteriormente
+                                    String boxId = "";
+                                    if(isCoach){
+                                        boxId = currentUser.getUid() + "_box";
+                                    }
+                                    //Crea el usuario
                                     User user = new User(username, email, isCoach, boxId);
                                     //Se crea el usuario en "Users"
                                     dbUsers.child(currentUser.getUid())
@@ -169,8 +175,7 @@ public class SignUp extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
-                                                        Toast.makeText(SignUp.this, "Usuario creado en la BD", Toast.LENGTH_SHORT).show();
-
+                                                        //Si es entrenador le crea un box asociado al entrenador
                                                         if(isCoach){
                                                             //Se crea el box
                                                             Box box = new Box(user.getUsername()+"'s box", "Box address");
@@ -188,10 +193,7 @@ public class SignUp extends AppCompatActivity {
 
                                     //Oculta la progressbar
                                     progressBar.setVisibility(View.GONE);
-
                                     //Se crea el box y se asigna al entrenador
-
-
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -206,4 +208,37 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    public boolean userEnteredCorrectly(String username){
+        if(TextUtils.isEmpty(username)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //Método que comprueba si el email es válido
+    public boolean emailEnteredCorrectly(String email){
+        //Patron de un email
+        String regex = "^(.+)@(.+)$";
+        //Se introduce el patron y email
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        //Comprueba que el email introducido es válido
+        if(matcher.matches()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //Método que comprueba si la contraseña se ha introducido correctamente
+    private boolean validPassword(String password, String repeatPassword) {
+        if(password.equals(repeatPassword)){
+           return true;
+        }else{
+            return false;
+        }
+    }
+
 }

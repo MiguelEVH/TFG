@@ -56,7 +56,7 @@
             android:textSize="20sp"
             android:enabled="false"
             android:text=""
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/black"
             android:textColorHint="@color/grey40"/>
 

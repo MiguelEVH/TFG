@@ -15,8 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tfg.classes.PersonalBestRecord;
-import com.example.tfg.classes.User;
-import com.example.tfg.classes.WorkoutExercise;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -100,18 +98,26 @@ public class PersonalBestUpdate extends AppCompatActivity {
             }
         });
 
+        //Se guarda la nueva marca del usuario
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Oculta el botón de guardar
-                btnSave.setVisibility(View.GONE);
-                //Muestra el botón de editar
-                btnEdit.setVisibility(View.VISIBLE);
-                editTextExerciseWeight.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
-                editTextExerciseWeight.setEnabled(false);
-                //Se actualiza la rm del crossfitero del ejercicio seleccionado
-                //dbReference.child(exerciseId).setValue(Double.valueOf(String.valueOf(editTextExerciseWeight.getText())));
-                dbReference.setValue(Double.valueOf(String.valueOf(editTextExerciseWeight.getText())));
+                PersonalBestRecord personalBestRecord = new PersonalBestRecord();
+                //Comprueba si el peso es válido
+                if(personalBestRecord.validWeight(Double.parseDouble(String.valueOf(editTextExerciseWeight.getText())))){
+                    //Oculta el botón de guardar
+                    btnSave.setVisibility(View.GONE);
+                    //Muestra el botón de editar
+                    btnEdit.setVisibility(View.VISIBLE);
+                    editTextExerciseWeight.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
+                    editTextExerciseWeight.setEnabled(false);
+                    //Se actualiza la rm del crossfitero del ejercicio seleccionado
+                    dbReference.setValue(Double.valueOf(String.valueOf(editTextExerciseWeight.getText())));
+                }else{
+                    Toast.makeText(PersonalBestUpdate.this, "Peso no válido", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

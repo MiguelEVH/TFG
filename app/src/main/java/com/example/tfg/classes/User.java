@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class User {
 
+    private String id;
     private String username;
     private String email;
     private boolean isCoach;
     private int fee;
     private int availableCredits;
-    private ArrayList<PersonalBestRecord> personalBestRecords;
     private String boxId;
 
     //Constructor vacío
@@ -28,7 +28,13 @@ public class User {
         this.boxId = boxId;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -74,11 +80,4 @@ public class User {
         this.boxId = boxId;
     }
 
-    public ArrayList<PersonalBestRecord> getPersonalBestRecords() {
-        return personalBestRecords;
-    }
-
-    public void setPersonalBestRecords(ArrayList<PersonalBestRecord> crossfitPersonalBestRecords) {
-        this.personalBestRecords = personalBestRecords;
-    }
 }

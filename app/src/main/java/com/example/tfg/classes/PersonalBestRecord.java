@@ -1,5 +1,8 @@
 package com.example.tfg.classes;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PersonalBestRecord {
 
     private String id;
@@ -37,5 +40,17 @@ public class PersonalBestRecord {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    //Método que comprueba si un peso es válido
+    public boolean validWeight(double weight){
+        //Patron de un double
+        String regex = "\\d{1,3}+\\.\\d{1,2}";
+        //Comprueba que el email introducido es válido
+        if(String.valueOf(weight).matches(regex)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

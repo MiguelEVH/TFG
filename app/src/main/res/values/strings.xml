@@ -57,6 +57,7 @@
     <!-- Box Manage Crossfiters -->
     <string name="crossfittersManagement_title">Gestión de crossfiteros</string>
     <string name="crossfittersManagement_addCrossfiter">Añadir crossfitero</string>
+    <string name="crossfittersManagement_newUserEmail">Email del nuevo usuario</string>
     <!-- Class Planning -->
     <string name="classPlanning_title">Planificar clases</string>
 </resources>

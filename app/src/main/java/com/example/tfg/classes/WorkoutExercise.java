@@ -6,6 +6,7 @@ public class WorkoutExercise {
     private String name;
     private String url;
     private int image;
+    private double weight;
 
     //Constructor vacío
     public WorkoutExercise() {
@@ -50,4 +51,6 @@ public class WorkoutExercise {
     public void setImage(int image) {
         this.image = image;
     }
+
+
 }

@@ -13,7 +13,6 @@
     </include>
 
     <!-- CrossWOD image -->
-
     <ImageView
         android:id="@+id/crossWOD"
         android:layout_width="313dp"
