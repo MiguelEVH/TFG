@@ -37,7 +37,7 @@ public class UserProfile extends AppCompatActivity {
     ImageButton btnEditUsername, btnSaveUsername;
     FirebaseAuth fbAuth;
     FirebaseUser fbUser;
-    DatabaseReference dbReference;
+    DatabaseReference dbReference, dbBoxReference;
     String userId;
 
     @Override
@@ -96,6 +96,29 @@ public class UserProfile extends AppCompatActivity {
                         currentUser.setAvailableCredits(Integer.valueOf(String.valueOf(child.getValue())));
                     } else if (child.getKey().equals("fee")) {
                         currentUser.setFee(Integer.valueOf(String.valueOf(child.getValue())));
+                    }else if (child.getKey().equals("boxId")){
+                        //Comprueba que tiene box
+                        if(!String.valueOf(child.getValue()).isEmpty()){
+                            currentUser.setBoxId(String.valueOf(child.getValue()));
+                            //Coge el nombre del box
+                            //Recupera el nombre del box
+                            dbBoxReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
+                            dbBoxReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Box dbBox = snapshot.getValue(Box.class);
+                                    //Si el usuario está adscrito a un box, lo muestra
+                                    if(dbBox != null){
+                                        box.setText(dbBox.getName());
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                }
+                            });
+                        }
+
                     }
                 }
                 //Damos valor a los TextView
@@ -103,23 +126,6 @@ public class UserProfile extends AppCompatActivity {
                 email.setText(currentUser.getEmail());
                 contractedClasses.setText(String.valueOf(currentUser.getFee()));
                 availableClasses.setText(String.valueOf(currentUser.getAvailableCredits()));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-        //Recupera el nombre del box
-        dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+userId+"_box");
-        dbReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Box dbBox = snapshot.getValue(Box.class);
-                //Si el usuario está adscrito a un box, lo muestra
-                if(dbBox != null){
-                    box.setText(dbBox.getName());
-                }
             }
 
             @Override

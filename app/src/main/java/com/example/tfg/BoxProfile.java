@@ -228,16 +228,20 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                             boxMap = googleMap;
                             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                             try {
-                                List<Address> addressList = geocoder.getFromLocationName(box.getAddress(), 1);
-                                //Si la dirección no es válida, avisa del error
-                                if(addressList.isEmpty()){
-                                    Toast.makeText(BoxProfile.this, "No se han podido coger las coordenadas de la localización del box", Toast.LENGTH_SHORT).show();
+                                if(box.getAddress() == null){
+                                    Toast.makeText(BoxProfile.this, "No está adscrito a un box", Toast.LENGTH_SHORT).show();
                                 }else{
-                                    //Coge las coordenadas del box
-                                    LatLng boxCoordinates = new LatLng(addressList.get(0).getLatitude(), addressList.get(0).getLongitude());
-                                    //Añade un marcador con las coordenadas del box y mueve la cámara a este
-                                    boxMap.addMarker(new MarkerOptions().position(boxCoordinates));
-                                    boxMap.moveCamera(CameraUpdateFactory.newLatLng(boxCoordinates));
+                                    List<Address> addressList = geocoder.getFromLocationName(box.getAddress(), 1);
+                                    //Si la dirección no es válida, avisa del error
+                                    if(addressList.isEmpty()){
+                                        Toast.makeText(BoxProfile.this, "No se han podido coger las coordenadas de la localización del box", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        //Coge las coordenadas del box
+                                        LatLng boxCoordinates = new LatLng(addressList.get(0).getLatitude(), addressList.get(0).getLongitude());
+                                        //Añade un marcador con las coordenadas del box y mueve la cámara a este
+                                        boxMap.addMarker(new MarkerOptions().position(boxCoordinates));
+                                        boxMap.moveCamera(CameraUpdateFactory.newLatLng(boxCoordinates));
+                                    }
                                 }
                             } catch (IOException e) {
                                 throw new RuntimeException(e);

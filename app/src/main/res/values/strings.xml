@@ -60,4 +60,14 @@
     <string name="crossfittersManagement_newUserEmail">Email del nuevo usuario</string>
     <!-- Class Planning -->
     <string name="classPlanning_title">Planificar clases</string>
+    <!-- Add Crossfitter -->
+    <string name="addCrossfitter_title">Añadir crossfitero</string>
+    <string name="addCrossfitter_username">Usuario:</string>
+    <string name="addCrossfitter_email">Email:</string>
+    <string name="addCrossfitter_fee">Clases semanales:</string>
+    <string name="addCrossfitter_addCrossfitter">Añadir crossfitero</string>
+    <!-- Update crossfitter -->
+    <string name="updateBoxCrossfitter_title">Actualizar crossfitero</string>
+    <string name="updateBoxCrossfitter_update">Guardar cambios</string>
+    <string name="updateBoxCrossfitter_deleteFromBox">Eliminar del box</string>
 </resources>

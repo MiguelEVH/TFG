@@ -168,7 +168,7 @@ public class SignUp extends AppCompatActivity {
                                         boxId = currentUser.getUid() + "_box";
                                     }
                                     //Crea el usuario
-                                    User user = new User(username, email, isCoach, boxId);
+                                    User user = new User(username, email, isCoach, boxId, 0, 0);
                                     //Se crea el usuario en "Users"
                                     dbUsers.child(currentUser.getUid())
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

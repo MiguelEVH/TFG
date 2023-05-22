@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".AddCrossfitter">
+    tools:context=".UpdateBoxCrossfitter">
 
     <include
         android:id="@+id/action_bar"
@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/addCrossfitter_username"
+                android:id="@+id/updateBoxCrossfitter_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -32,7 +32,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/addCrossfitter_usernameData"
+                android:id="@+id/updateBoxCrossfitter_usernameData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -55,7 +55,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/addCrossfitter_email"
+                android:id="@+id/updateBoxCrossfitter_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -64,7 +64,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/addCrossfitter_emailData"
+                android:id="@+id/updateBoxCrossfitter_emailData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -88,7 +88,7 @@
             android:layout_gravity="center">
 
             <TextView
-                android:id="@+id/addCrossfitter_fee"
+                android:id="@+id/updateBoxCrossfitter_fee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -97,11 +97,10 @@
                 android:textColor="@color/black"/>
 
             <EditText
-                android:id="@+id/addCrossfitter_feeData"
-                android:layout_width="match_parent"
+                android:id="@+id/updateBoxCrossfitter_feeData"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="30dp"
                 android:layout_gravity="center"
                 android:textSize="20dp"
                 android:inputType="number"
@@ -114,18 +113,29 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addCrossfitter_btn_addCrossfitter"
+        android:id="@+id/updateBoxCrossfitter_btn_deleteCrossfitter"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="170dp"
+        android:backgroundTint="@color/darkRed"
+        android:text="@string/updateBoxCrossfitter_deleteFromBox"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/updateBoxCrossfitter_btn_updateFee"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="110dp"
         android:backgroundTint="@color/button"
-        android:text="@string/addCrossfitter_addCrossfitter"
+        android:text="@string/updateBoxCrossfitter_update"
         android:textColor="@color/white" />
 
     <Button
-        android:id="@+id/addCrossfitter_btn_back"
+        android:id="@+id/updateBoxCrossfitter_btn_back"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

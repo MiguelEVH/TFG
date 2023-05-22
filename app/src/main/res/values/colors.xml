@@ -15,4 +15,5 @@
     <color name="button">#7c26cb</color>
     <color name="button_cancel">#cccccc</color>
     <color name="hollow">#00000000</color>
+    <color name="darkRed">#770425</color>
 </resources>

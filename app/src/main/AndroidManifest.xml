@@ -21,6 +21,9 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
         <activity
+            android:name=".UpdateBoxCrossfitter"
+            android:exported="false" />
+        <activity
             android:name=".AddCrossfitter"
             android:exported="false" />
         <activity

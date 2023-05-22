@@ -10,7 +10,8 @@ android {
     defaultConfig {
         applicationId "com.example.tfg"
         minSdk 23
-        targetSdk 31
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 29
         versionCode 1
         versionName "1.0"
 

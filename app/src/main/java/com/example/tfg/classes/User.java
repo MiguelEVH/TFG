@@ -21,11 +21,13 @@ public class User {
     }
 
     //Constructor parametrizado
-    public User(String username, String email, boolean isCoach, String boxId) {
+    public User(String username, String email, boolean isCoach, String boxId, int availableCredits, int fee) {
         this.username = username;
         this.email = email;
         this.isCoach = isCoach;
         this.boxId = boxId;
+        this.availableCredits = availableCredits;
+        this.fee = fee;
     }
 
     public String getId() {
@@ -54,6 +56,10 @@ public class User {
 
     public boolean isCoach() {
         return isCoach;
+    }
+
+    public void setCoach(boolean coach) {
+        isCoach = coach;
     }
 
     public int getFee() {

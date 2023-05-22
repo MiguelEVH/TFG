@@ -98,7 +98,6 @@ public class LogIn extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 
                                 if(task.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(), "Sesión iniciada correctamente", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();

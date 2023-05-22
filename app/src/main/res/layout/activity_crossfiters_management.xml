@@ -30,8 +30,8 @@
         android:layout_marginBottom="190dp"
         android:backgroundTint="@color/black"
         android:hint="@string/crossfittersManagement_newUserEmail"
-        android:textColorHint="@color/grey40"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey40" />
 
     <Button
         android:id="@+id/crossfittersManagement_btn_addCrossfitter"
