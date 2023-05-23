@@ -11,12 +11,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.tfg.classes.PersonalBestBaseAdapter;
+import com.example.tfg.Adapters.PersonalBestBaseAdapter;
 import com.example.tfg.classes.PersonalBestRecord;
-import com.example.tfg.classes.TutorialsBaseAdapter;
-import com.example.tfg.classes.User;
 import com.example.tfg.classes.WorkoutExercise;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +21,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
@@ -36,7 +32,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PersonalBest extends AppCompatActivity {
 

@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.tfg.classes.TutorialsBaseAdapter;
+import com.example.tfg.Adapters.TutorialsBaseAdapter;
 import com.example.tfg.classes.WorkoutExercise;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

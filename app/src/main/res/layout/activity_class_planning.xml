@@ -11,6 +11,79 @@
         android:id="@+id/action_bar"
         layout="@layout/action_bar"></include>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="120dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/classPlanning_btn_monday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_monday"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/classPlanning_btn_tuesday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_tuesday"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/classPlanning_btn_wednesday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_wednesday"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/classPlanning_btn_thursday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_thursday"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/classPlanning_btn_friday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_friday"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/classPlanning_btn_saturday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classWeekendColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_saturday"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/classPlanning_btn_sunday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/classWeekendColor"
+            android:textColor="@color/black"
+            android:text="@string/classPlanning_sunday"
+            android:layout_marginBottom="10dp"/>
+
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/classPlanning_btn_back"
         android:layout_width="250dp"

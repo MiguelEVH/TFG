@@ -1,7 +1,6 @@
-package com.example.tfg.classes;
+package com.example.tfg.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,22 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tfg.R;
+import com.example.tfg.classes.WorkoutExercise;
 
 import java.util.ArrayList;
 
-public class PersonalBestBaseAdapter extends BaseAdapter {
+public class TutorialsBaseAdapter extends BaseAdapter {
 
     //Variables
     private Context context;
     private ArrayList<WorkoutExercise> workoutList;
-    private ArrayList<PersonalBestRecord> personalBestRecords;
     private LayoutInflater inflater;
 
     //Constructor
-    public PersonalBestBaseAdapter(Context context, ArrayList workoutList, ArrayList personalBestRecords) {
+    public TutorialsBaseAdapter(Context context, ArrayList workoutList) {
         this.context = context;
         this.workoutList = workoutList;
-        this.personalBestRecords = personalBestRecords;
         inflater = LayoutInflater.from(context);
     }
 
@@ -51,16 +49,13 @@ public class PersonalBestBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         //Se genera la vista
-        view = inflater.inflate(R.layout.activity_personal_best_list_view, null);
+        view = inflater.inflate(R.layout.activity_tutorials_list_view, null);
         //Asigna las variables del item
-        TextView workoutText = (TextView) view.findViewById(R.id.personalBest_workoutName);
-        TextView weight = (TextView) view.findViewById(R.id.personalBest_weight);
-        ImageView workoutImage = (ImageView) view.findViewById(R.id.personalBest_workoutImage);
+        TextView workoutText = (TextView) view.findViewById(R.id.tutorials_workoutName);
+        ImageView workoutImage = (ImageView) view.findViewById(R.id.tutorials_workoutImage);
         //Da valores al item
         workoutText.setText(workoutList.get(i).getName());
-        workoutImage.setImageResource(Integer.valueOf(workoutList.get(i).getImage()) );
-        //Comprueba si el usuario ha registrado una marca personal
-        weight.setText(String.valueOf(personalBestRecords.get(i).getWeight())+" Kg");
+        workoutImage.setImageResource(workoutList.get(i).getImage());
         //Retorna la vista del workout
         return view;
     }

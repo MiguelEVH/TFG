@@ -1,4 +1,4 @@
-package com.example.tfg.classes;
+package com.example.tfg.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tfg.R;
+import com.example.tfg.classes.User;
 
 import java.util.ArrayList;
 

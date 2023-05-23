@@ -60,6 +60,18 @@
     <string name="crossfittersManagement_newUserEmail">Email del nuevo usuario</string>
     <!-- Class Planning -->
     <string name="classPlanning_title">Planificar clases</string>
+    <string name="classPlanning_monday">Lunes</string>
+    <string name="classPlanning_tuesday">Martes</string>
+    <string name="classPlanning_wednesday">Miércoles</string>
+    <string name="classPlanning_thursday">Jueves</string>
+    <string name="classPlanning_friday">Viernes</string>
+    <string name="classPlanning_saturday">Sábado</string>
+    <string name="classPlanning_sunday">Domingo</string>
+    <!-- Class Day -->
+    <string name="classDay_createClass">Crear clase</string>
+    <string name="classDay_separationHour">:</string>
+    <string name="classDay_separationReserves">/</string>
+    <string name="classDay_typeCrossfit">CrossFit</string>
     <!-- Add Crossfitter -->
     <string name="addCrossfitter_title">Añadir crossfitero</string>
     <string name="addCrossfitter_username">Usuario:</string>

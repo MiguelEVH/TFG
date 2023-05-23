@@ -21,6 +21,16 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
         <activity
+            android:name=".ClassDayListView"
+            android:exported="false" />
+        <activity
+            android:name=".ClassDay"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".UpdateBoxCrossfitter"
             android:exported="false" />
         <activity
@@ -100,10 +110,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

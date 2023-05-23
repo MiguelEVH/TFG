@@ -3,7 +3,6 @@ package com.example.tfg;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +11,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tfg.classes.CrossfittersBaseAdapter;
-import com.example.tfg.classes.PersonalBestBaseAdapter;
-import com.example.tfg.classes.PersonalBestRecord;
+import com.example.tfg.Adapters.CrossfittersBaseAdapter;
 import com.example.tfg.classes.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

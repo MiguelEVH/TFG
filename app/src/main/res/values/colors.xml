@@ -12,6 +12,8 @@
     <color name="background">#dbbff6</color>
     <color name="background_variant">#9540e4</color>
     <color name="background_variantDarker">#521987</color>
+    <color name="classColor">#f4e8ff</color>
+    <color name="classWeekendColor">#b4b8f8</color>
     <color name="button">#7c26cb</color>
     <color name="button_cancel">#cccccc</color>
     <color name="hollow">#00000000</color>
