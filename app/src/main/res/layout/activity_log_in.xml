@@ -1,110 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".LogIn">
 
-    <!-- CrossWOD image -->
     <ImageView
         android:id="@+id/crossWOD"
-        android:layout_width="313dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
         android:contentDescription="Logo CrossWOD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_apaisado" />
 
-    <!-- Email -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="290dp"
         android:backgroundTint="@color/black"
         android:hint="@string/email"
         android:textColor="@color/black"
-        android:textColorHint="@color/grey40"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crossWOD" />
+        android:textColorHint="@color/grey40" />
 
-    <!-- Password -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="220dp"
         android:backgroundTint="@color/black"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:textColorHint="@color/grey40"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        android:textColorHint="@color/grey40" />
 
-    <!-- Progress bar -->
     <ProgressBar
         android:id="@+id/progresBar"
         android:visibility="gone"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crossWOD" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="300dp" />
 
-    <!-- Log in Button -->
     <Button
         android:id="@+id/btn_login"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="140dp"
         android:backgroundTint="@color/button"
-        android:text="@string/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        android:text="@string/login" />
 
-    <!-- Forgot Password -->
     <TextView
         android:id="@+id/btn_forgotPassword"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="90dp"
         android:backgroundTint="@color/button_cancel"
         android:text="@string/haveYouForgotThePassword"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        android:textSize="16dp" />
 
     <!-- Are you new? -->
     <TextView
         android:id="@+id/btn_areYouNew"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
         android:text="@string/areYouNew"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_forgotPassword" />
+        android:textColor="@color/black" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

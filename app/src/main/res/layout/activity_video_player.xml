@@ -17,11 +17,11 @@
         android:id="@+id/videoPlayer_btn_back"
         android:layout_width="250dp"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/button_cancel"
         android:text="@string/back"
-        android:textColor="@color/black"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"/>
+        android:textColor="@color/black"/>
 
 </RelativeLayout>

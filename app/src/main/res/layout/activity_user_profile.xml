@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,194 +7,178 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
-    <!-- Action Bar -->
     <include
         android:id="@+id/action_bar"
         layout="@layout/action_bar"></include>
 
-    <!-- User -->
-
-    <!-- User data -->
-    <TextView
-        android:id="@+id/profile_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="@string/profile_user"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
-
-    <EditText
-        android:id="@+id/profile_username"
-        android:layout_width="210dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="137dp"
-        android:background="@color/hollow"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/black"
-        android:textColorHint="@color/grey40"
-        app:layout_constraintStart_toEndOf="@+id/profile_user"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/profile_email"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_user" />
+        <TextView
+            android:id="@+id/profile_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_user"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/profile_username"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:textSize="16dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey40" />
+
+        <ImageButton
+            android:id="@+id/profile_btn_username_edit"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/hollow"
+            android:contentDescription="EditButton"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <ImageButton
+            android:id="@+id/profile_btn_username_save"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/hollow"
+            android:contentDescription="SaveButton"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_save" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="160dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_email"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/profile_email_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
 
 
-    <EditText
-        android:id="@+id/profile_email_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/hollow"
-        android:enabled="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_email"
-        app:layout_constraintTop_toBottomOf="@+id/profile_user" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="220dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/profile_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/profile_box"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+        <TextView
+            android:id="@+id/profile_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_box"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/profile_box_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
 
 
-    <!-- Email data -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="280dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <EditText
-        android:id="@+id/profile_box_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/hollow"
-        android:enabled="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_box"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+        <TextView
+            android:id="@+id/profile_contractedClasses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_contractedClasses"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/profile_contractedClasses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/profile_contractedClasses"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_box" />
+        <EditText
+            android:id="@+id/profile_contractedClasses_data"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/profile_contractedClasses_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/hollow"
-        android:enabled="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_contractedClasses"
-        app:layout_constraintTop_toBottomOf="@+id/profile_box" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="340dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/profile_availableClasses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
-        android:text="@string/profile_availableClasses"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_contractedClasses" />
+        <TextView
+            android:id="@+id/profile_availableClasses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/profile_availableClasses"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/profile_availableClasses_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
 
     <!-- Available Classes data -->
     <!-- Back -->
-
-    <EditText
-        android:id="@+id/profile_availableClasses_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/hollow"
-        android:enabled="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_availableClasses"
-        app:layout_constraintTop_toBottomOf="@+id/profile_contractedClasses" />
 
     <Button
         android:id="@+id/profile_btn_back"
         android:layout_width="250dp"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/button_cancel"
         android:text="@string/back"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/black" />
 
-    <ImageButton
-        android:id="@+id/profile_btn_username_edit"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="137dp"
-        android:contentDescription="EditButton"
-        android:background="@color/hollow"
-        app:layout_constraintStart_toEndOf="@+id/profile_username"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        app:srcCompat="@drawable/ic_edit"/>
-
-    <ImageButton
-        android:id="@+id/profile_btn_username_save"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="137dp"
-        android:contentDescription="SaveButton"
-        android:visibility="invisible"
-        android:background="@color/hollow"
-        app:layout_constraintStart_toEndOf="@+id/profile_username"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        app:srcCompat="@drawable/ic_save"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

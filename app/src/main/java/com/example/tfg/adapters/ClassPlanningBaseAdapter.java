@@ -1,4 +1,4 @@
-package com.example.tfg.Adapters;
+package com.example.tfg.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,26 +8,25 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tfg.R;
-import com.example.tfg.classes.User;
 
 import java.util.ArrayList;
 
-public class CrossfittersBaseAdapter extends BaseAdapter {
+public class ClassPlanningBaseAdapter extends BaseAdapter {
 
+    //Variables
     private Context context;
-    private ArrayList<User> crossfitters;
+    private ArrayList<String> daysOfWeek;
     private LayoutInflater inflater;
 
-    public CrossfittersBaseAdapter(Context context, ArrayList crossfitters){
+    public ClassPlanningBaseAdapter(Context context, ArrayList<String> daysOfWeek) {
         this.context = context;
-        this.crossfitters = crossfitters;
+        this.daysOfWeek = daysOfWeek;
         inflater = LayoutInflater.from(context);
     }
 
-
     @Override
     public int getCount() {
-        return crossfitters.size();
+        return daysOfWeek.size();
     }
 
     @Override
@@ -43,12 +42,12 @@ public class CrossfittersBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         //Se genera la vista
-        view = inflater.inflate(R.layout.activity_crossfitters_management_list_view, null);
+        view = inflater.inflate(R.layout.activity_class_planning_list_view, null);
         //Asigna las variables del item
-        TextView username = (TextView) view.findViewById(R.id.crosfittersManagementListView_username);
+        TextView workoutText = (TextView) view.findViewById(R.id.classPlanning_day);
         //Da valores al item
-        username.setText(crossfitters.get(i).getUsername());
-        //Retorna la vista de crossfiteros
+        workoutText.setText(daysOfWeek.get(i));
+        //Retorna la vista del workout
         return view;
     }
 }

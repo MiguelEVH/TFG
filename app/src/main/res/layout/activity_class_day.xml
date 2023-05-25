@@ -11,7 +11,25 @@
         android:id="@+id/action_bar"
         layout="@layout/action_bar"></include>
 
+    <ListView
+        android:id="@+id/classDay_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="190dp"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        tools:layout_editor_absoluteX="1dp" />
 
+    <Button
+        android:id="@+id/classDay_btn_createClass"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="110dp"
+        android:backgroundTint="@color/button"
+        android:text="@string/classDay_createClass" />
 
     <Button
         android:id="@+id/classDay_btn_back"

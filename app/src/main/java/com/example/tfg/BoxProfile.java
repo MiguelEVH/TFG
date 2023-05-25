@@ -141,7 +141,7 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                 //Muestra el botón de guardar
                 btnSaveBoxName.setVisibility(View.VISIBLE);
                 //Clarea el fondo del texto del WOD
-                boxName.setBackgroundColor(getResources().getColor(R.color.grey40, activityTheme));
+                boxName.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
                 boxName.setEnabled(true);
             }
         });

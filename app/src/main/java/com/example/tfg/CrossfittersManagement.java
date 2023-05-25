@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tfg.Adapters.CrossfittersBaseAdapter;
+import com.example.tfg.adapters.CrossfittersManagementBaseAdapter;
 import com.example.tfg.classes.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,7 +42,7 @@ public class CrossfittersManagement extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crossfiters_management);
+        setContentView(R.layout.activity_crossfitters_management);
         //Se crea la action bar
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
@@ -84,7 +84,7 @@ public class CrossfittersManagement extends AppCompatActivity{
                     allCrossfitters.add(user);
                 }
                 //Muestra los crossfiteros del box
-                CrossfittersBaseAdapter customBaseAdapter = new CrossfittersBaseAdapter(getApplicationContext(), boxCrossfitters);
+                CrossfittersManagementBaseAdapter customBaseAdapter = new CrossfittersManagementBaseAdapter(getApplicationContext(), boxCrossfitters);
                 crosfittersListView.setAdapter(customBaseAdapter);
                 crosfittersListView.getAdapter();
             }
@@ -109,7 +109,6 @@ public class CrossfittersManagement extends AppCompatActivity{
                 finish();
             }
         });
-
 
         //Botón que añade un crossfitero
         btnAddCrossfitter = findViewById(R.id.crossfittersManagement_btn_addCrossfitter);

@@ -25,22 +25,23 @@
     <ImageView
         android:id="@+id/personalBestUpdate_exerciseImage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="170dp"
         android:layout_centerHorizontal="true"/>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="450dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:orientation="horizontal"
+        android:gravity="center|bottom">
 
         <TextView
             android:id="@+id/personalBestUpdate_exerciseRm"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="@string/personalBestUpdate_rm"
             android:textColor="@color/black"
@@ -50,7 +51,7 @@
         <EditText
             android:id="@+id/personalBestUpdate_exerciseRmData"
             android:layout_width="50dp"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:background="@color/hollow"
             android:textSize="20sp"
@@ -63,7 +64,7 @@
         <TextView
             android:id="@+id/personalBestUpdate_exerciseRmMeasure"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="@string/personalBestUpdate_rmMeasure"
             android:textColor="@color/black"
@@ -72,7 +73,7 @@
         <ImageButton
             android:id="@+id/personalBestUpdate_btn_personalBest_edit"
             android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:contentDescription="EditButton"
             android:background="@color/hollow"
             app:srcCompat="@drawable/ic_edit"/>
@@ -80,12 +81,11 @@
         <ImageButton
             android:id="@+id/personalBestUpdate_btn_personalBest_save"
             android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:contentDescription="SaveButton"
             android:visibility="gone"
             android:background="@color/hollow"
             app:srcCompat="@drawable/ic_save"/>
-
     </LinearLayout>
 
     <Button

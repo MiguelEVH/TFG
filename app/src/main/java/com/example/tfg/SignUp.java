@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -37,6 +39,7 @@ public class SignUp extends AppCompatActivity {
     RadioButton radioButton_no;
     Button btnSignUp;
     TextView textViewAlreadyRegistered;
+    ImageView crossWOD;
     ProgressBar progressBar;
     DatabaseReference dbUsers, dbBox;
     FirebaseAuth auth;
@@ -68,6 +71,7 @@ public class SignUp extends AppCompatActivity {
         progressBar = findViewById(R.id.progresBar);
 
         //Variables
+        crossWOD = findViewById(R.id.signUp_crossWOD);
         editTextUser = findViewById(R.id.user);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -77,6 +81,16 @@ public class SignUp extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btn_signup);
         textViewAlreadyRegistered = findViewById(R.id.btn_alreadyRegistered);
         isCoach = false;
+
+        //Comprueba los píxeles de la pantalla
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        //Si es una pantalla pequeña, oculta el logo
+        if(metrics.densityDpi < 700){
+            crossWOD.setVisibility(View.GONE);
+        }
+
+
 
         //Conecta con los usuarios y boxes de la base de datos
         dbUsers = FirebaseDatabase.getInstance().getReference("Users");

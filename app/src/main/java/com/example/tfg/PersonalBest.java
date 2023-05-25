@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.tfg.Adapters.PersonalBestBaseAdapter;
+import com.example.tfg.adapters.PersonalBestBaseAdapter;
 import com.example.tfg.classes.PersonalBestRecord;
 import com.example.tfg.classes.WorkoutExercise;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,7 +81,7 @@ public class PersonalBest extends AppCompatActivity {
                     //Coge las marcas personales
                     PersonalBestRecord record = new PersonalBestRecord();
                     record.setId(child.getKey());
-                    record.setWeight(Long.valueOf((Long) child.getValue()).doubleValue());
+                    record.setWeight(Double.parseDouble(String.valueOf(child.getValue())));
                     personalBestRecordsAux.add(record);
                 }
                 //Variable que controla si el ejercicio coincide con la id de la marca personal

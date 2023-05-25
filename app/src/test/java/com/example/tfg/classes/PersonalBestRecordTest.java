@@ -19,24 +19,32 @@ public class PersonalBestRecordTest {
     public void validWeightTest() {
 
         //Peso válido
-        double peso1 = 20.0;
-        assertTrue(personalBestRecord.validWeight(peso1));
+        double peso = 20.0;
+        assertTrue(personalBestRecord.validWeight(peso));
 
         //Peso válido
-        double peso2 = 100.0;
-        assertTrue(personalBestRecord.validWeight(peso2));
+        peso = 100.0;
+        assertTrue(personalBestRecord.validWeight(peso));
 
         //Peso válido
-        double peso3 = 1.0;
-        assertTrue(personalBestRecord.validWeight(peso3));
+        peso = 1.0;
+        assertTrue(personalBestRecord.validWeight(peso));
+
+        //Peso válido
+        peso = 1.5;
+        assertTrue(personalBestRecord.validWeight(peso));
 
         //Peso no válido
-        double peso4 = 1000.0;
-        assertFalse(personalBestRecord.validWeight(peso4));
+        peso = 1000.0;
+        assertFalse(personalBestRecord.validWeight(peso));
 
         //Peso no válido
-        double peso5 = -1.0;
-        assertFalse(personalBestRecord.validWeight(peso5));
+        peso = -1.0;
+        assertFalse(personalBestRecord.validWeight(peso));
+
+        //Peso no válido
+        peso = 10.888;
+        assertFalse(personalBestRecord.validWeight(peso));
     }
 }
 

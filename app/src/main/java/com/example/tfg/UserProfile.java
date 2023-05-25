@@ -150,7 +150,7 @@ public class UserProfile extends AppCompatActivity {
                 //Muestra el botón de guardar
                 btnSaveUsername.setVisibility(View.VISIBLE);
                 //Oscurece el fondo del texto del WOD
-                user.setBackgroundColor(getResources().getColor(R.color.grey40, activityTheme));
+                user.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
                 user.setEnabled(true);
             }
         });

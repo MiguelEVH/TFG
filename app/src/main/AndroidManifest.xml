@@ -21,24 +21,49 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
         <activity
+            android:name=".CrossfittersListView"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ShowClass"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ShowClassUpdate"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ClassCreate"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ClassPlanningListView"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ClassDayListView"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ClassDay"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UpdateBoxCrossfitter"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AddCrossfitter"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CrossfittersManagementListView"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ClassPlanning"
             android:exported="false"

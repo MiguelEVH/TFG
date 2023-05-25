@@ -83,28 +83,32 @@ public class WodTraining extends AppCompatActivity {
                     User currentUser = new User();
                     if(child.getKey().equals("boxId")){
                         currentUser.setBoxId(String.valueOf(child.getValue()));
-                    }
-                    //Si el usuario tiene un box, coge la dirección
-                    if(currentUser.getBoxId() != null){
-                        //Se hace referencia al box del usuario
-                        dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
-                        dbReference.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                //Se cogen los datos del box
-                                Box box = snapshot.getValue(Box.class);
-                                if(box.getWod() != null){
-                                    wodText.setText(box.getWod());
+                        Toast.makeText(WodTraining.this, "BoxId: " + currentUser.getBoxId(), Toast.LENGTH_SHORT).show();
+
+                        //Si el usuario tiene un box, coge la dirección
+                        if(String.valueOf(child.getValue()) == null) {
+                            //Si no tiene box, muestra el mensaje
+                            wodText.setText(getResources().getText(R.string.checkWod_noBox));
+                            Toast.makeText(WodTraining.this, "No tiene box", Toast.LENGTH_SHORT).show();
+                        }else{
+                            //Se hace referencia al box del usuario
+                            dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
+                            dbReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    //Se cogen los datos del box
+                                    Box box = snapshot.getValue(Box.class);
+                                    if(box.getWod() != null){
+                                        wodText.setText(box.getWod());
+                                    }
                                 }
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                            }
-                        });
-                    }else{
-                        //Si no tiene box, muestra el mensaje
-                        wodText.setText(getResources().getText(R.string.checkWod_noBox));
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                }
+                            });
+                        }
                     }
+
                 }
             }
             @Override

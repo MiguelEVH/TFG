@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ClassCreate">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"></include>
+
+    <Spinner
+        android:id="@+id/classCreate_classSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="120dp"
+        android:textAlignment="center"
+        android:spinnerMode="dropdown" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/classCreate_btn_startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:background="@color/button"
+            android:text="@string/classCreate_startTime"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/classCreate_btn_endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginLeft="50dp"
+            android:background="@color/button"
+            android:text="@string/classCreate_endTime"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/classCreate_capacity"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/black"
+        android:hint="@string/classCreate_capacity"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey40"
+        android:textSize="20dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/classCreate_btn_createClass"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="110dp"
+        android:backgroundTint="@color/button"
+        android:text="@string/accept" />
+
+    <Button
+        android:id="@+id/classCreate_btn_back"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/button_cancel"
+        android:text="@string/cancel"
+        android:textColor="@color/black" />
+
+
+
+</RelativeLayout>

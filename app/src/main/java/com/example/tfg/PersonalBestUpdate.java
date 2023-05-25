@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class PersonalBestUpdate extends AppCompatActivity {
     FirebaseUser fbUser;
     DatabaseReference dbReference;
     TextView toolbarTitle, textViewExerciseName;
+    ImageView exerciseImageView;
     EditText editTextExerciseWeight;
     ImageView imageViewExerciseImage;
     Button btnBack;
@@ -48,16 +50,18 @@ public class PersonalBestUpdate extends AppCompatActivity {
         //Comprueba si el usuario tiene una sesión iniciada
         checkLoggedUser();
 
+        //Referencias al layout
+        exerciseImageView = findViewById(R.id.personalBestUpdate_exerciseImage);
+        textViewExerciseName = findViewById(R.id.personalBestUpdate_exerciseName);
+        editTextExerciseWeight = findViewById(R.id.personalBestUpdate_exerciseRmData);
+        imageViewExerciseImage = findViewById(R.id.personalBestUpdate_exerciseImage);
+
         //Se coge la id del crossfitero
         userId = getIntent().getStringExtra("userId");
         exerciseId = getIntent().getStringExtra("exerciseId");
         exerciseName = getIntent().getStringExtra("exerciseName");
         exerciseImage = getIntent().getStringExtra("exerciseImage");
         exercisePersonalBest = getIntent().getStringExtra("exercisePersonalBest");
-
-        textViewExerciseName = findViewById(R.id.personalBestUpdate_exerciseName);
-        editTextExerciseWeight = findViewById(R.id.personalBestUpdate_exerciseRmData);
-        imageViewExerciseImage = findViewById(R.id.personalBestUpdate_exerciseImage);
 
         //Rellena el texto con el nombre del ejercicio e imagen
         textViewExerciseName.setText(exerciseName);
@@ -93,7 +97,7 @@ public class PersonalBestUpdate extends AppCompatActivity {
                 //Muestra el botón de guardar
                 btnSave.setVisibility(View.VISIBLE);
                 //Oscurece el fondo del texto del WOD
-                editTextExerciseWeight.setBackgroundColor(getResources().getColor(R.color.grey40, activityTheme));
+                editTextExerciseWeight.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
                 editTextExerciseWeight.setEnabled(true);
             }
         });
@@ -116,12 +120,8 @@ public class PersonalBestUpdate extends AppCompatActivity {
                 }else{
                     Toast.makeText(PersonalBestUpdate.this, "Peso no válido", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
-
-
 
         //Listener que vuelve a la pantalla de inicio
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,6 @@ public class PersonalBestUpdate extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
 

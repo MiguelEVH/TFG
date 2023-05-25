@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,74 +15,61 @@
     <!-- CrossWOD image -->
     <ImageView
         android:id="@+id/crossWOD"
-        android:layout_width="313dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
         android:contentDescription="Logo CrossWOD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/action_bar"
         app:srcCompat="@drawable/logo_apaisado" />
 
     <Button
         android:id="@+id/main_btn_manageBox"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="290dp"
         android:backgroundTint="@color/button"
         android:text="@string/main_manageBox"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/main_btn_checkWod"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/main_btn_checkWod"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="230dp"
         android:backgroundTint="@color/button"
-        android:text="@string/main_checkWod"
-        app:layout_constraintBottom_toTopOf="@+id/main_btn_reservations"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/main_checkWod" />
 
     <Button
         android:id="@+id/main_btn_reservations"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="170dp"
         android:backgroundTint="@color/button"
-        android:text="@string/main_reservations"
-        app:layout_constraintBottom_toTopOf="@+id/main_btn_personalBest"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/main_reservations" />
 
     <Button
         android:id="@+id/main_btn_personalBest"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="110dp"
         android:backgroundTint="@color/button"
-        android:text="@string/main_personalBest"
-        app:layout_constraintBottom_toTopOf="@+id/main_btn_tutorials"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/main_personalBest" />
 
     <Button
         android:id="@+id/main_btn_tutorials"
         android:layout_width="250dp"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/button"
-        android:text="@string/main_tutorials"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/main_tutorials" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,121 +12,108 @@
         android:id="@+id/action_bar"
         layout="@layout/action_bar"></include>
 
-    <TextView
-        android:id="@+id/profilebox_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="@string/profilebox_name"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
-
-    <!-- Action Bar -->
-    <EditText
-        android:id="@+id/profilebox_name_data"
-        android:layout_width="210dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="137dp"
-        android:enabled="false"
-        android:textColor="@color/black"
-        android:background="@color/hollow"
-        app:layout_constraintStart_toEndOf="@+id/profilebox_name"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <ImageButton
-        android:id="@+id/profilebox_btn_name_save"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="137dp"
-        android:contentDescription="SaveButton"
-        android:visibility="invisible"
-        android:background="@color/hollow"
-        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        app:srcCompat="@drawable/ic_save" />
+        <TextView
+            android:id="@+id/profilebox_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/profilebox_name"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/profilebox_btn_name_edit"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="137dp"
-        android:contentDescription="EditButton"
-        android:background="@color/hollow"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar"
-        app:srcCompat="@drawable/ic_edit" />
+        <EditText
+            android:id="@+id/profilebox_name_data"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:enabled="false"
+            android:textColor="@color/black" />
 
+        <ImageButton
+            android:id="@+id/profilebox_btn_name_edit"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:background="@color/hollow"
+            android:contentDescription="EditButton"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_edit" />
 
-    <TextView
-        android:id="@+id/profilebox_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:text="@string/profilebox_address"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilebox_name" />
+        <ImageButton
+            android:id="@+id/profilebox_btn_name_save"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/hollow"
+            android:contentDescription="SaveButton"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_save" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/profilebox_address_data"
-        android:layout_width="196dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:enabled="false"
-        android:inputType="textMultiLine"
-        android:textColor="@color/black"
-        android:background="@color/hollow"
-        app:layout_constraintStart_toEndOf="@+id/profilebox_address"
-        app:layout_constraintTop_toBottomOf="@+id/profilebox_name" />
+        android:layout_marginTop="160dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
 
-    <ImageButton
-        android:id="@+id/profilebox_btn_address_save"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="10dp"
-        android:contentDescription="SaveButton"
-        android:background="@color/hollow"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
-        app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
-        app:srcCompat="@drawable/ic_save" />
+        <TextView
+            android:id="@+id/profilebox_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profilebox_address"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/profilebox_btn_address_edit"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="10dp"
-        android:contentDescription="EditButton"
-        android:background="@color/hollow"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/profilebox_name_data"
-        app:layout_constraintTop_toBottomOf="@+id/profilebox_name"
-        app:srcCompat="@drawable/ic_edit" />
+        <EditText
+            android:id="@+id/profilebox_address_data"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/hollow"
+            android:enabled="false"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:id="@+id/profilebox_btn_address_edit"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/hollow"
+            android:contentDescription="EditButton"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <ImageButton
+            android:id="@+id/profilebox_btn_address_save"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/hollow"
+            android:contentDescription="SaveButton"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_save" />
+    </LinearLayout>
 
 
     <fragment
         android:id="@+id/profilebox_boxLocationMap"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilebox_address_data"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="120dp"
         map:cameraZoom="15"
         map:uiRotateGestures="true"
         map:uiZoomControls="true"
@@ -136,13 +123,11 @@
         android:id="@+id/profilebox_btn_back"
         android:layout_width="250dp"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/button_cancel"
         android:text="@string/back"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/black" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

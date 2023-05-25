@@ -63,7 +63,7 @@ public class UpdateBoxCrossfitter extends AppCompatActivity {
                 }else{
                     //Referencia a las clases del usuario en la base de datos y elimina la referencia al box
                     dbReference = FirebaseDatabase.getInstance().getReference("Users/"+crossfitter.getId()+"/boxId");
-                    dbReference.setValue("");
+                    dbReference.removeValue();
                     Toast.makeText(UpdateBoxCrossfitter.this, "Crossfitero eliminado: " + crossfitter.getUsername(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), CrossfittersManagement.class);
                     intent.putExtra("userId", userId);

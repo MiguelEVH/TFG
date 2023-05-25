@@ -45,7 +45,7 @@ public class PersonalBestRecord {
     //Método que comprueba si un peso es válido
     public boolean validWeight(double weight){
         //Patron de un double
-        String regex = "\\d{1,3}+\\.\\d{1,2}";
+        String regex = "\\d{1,3}+\\.\\d";
         //Comprueba que el email introducido es válido
         if(String.valueOf(weight).matches(regex)){
             return true;

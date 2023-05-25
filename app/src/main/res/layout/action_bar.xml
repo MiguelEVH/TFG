@@ -10,7 +10,8 @@
         android:id="@+id/toolbar_CrossWODicon"
         android:gravity="start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:maxHeight="70dp"
         android:src="@mipmap/ic_launcher" />
 
     <TextView

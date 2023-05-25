@@ -1,24 +1,27 @@
 <resources>
+    <!-- General -->
     <string name="app_name">CrossWOD</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="user">Usuario</string>
+    <string name="back">Atrás</string>
+    <!-- LogIn & SignUp -->
     <string name="login">Iniciar sesión</string>
     <string name="signUp">Crear cuenta</string>
     <string name="email">Email</string>
     <string name="password">Contraseña</string>
-    <string name="user">Usuario</string>
     <string name="repeatPassword">Repita la contraseña</string>
     <string name="areYouACoach">¿Es entrenador?</string>
     <string name="alreadyRegistered">Ya estoy registrad@</string>
     <string name="haveYouForgotThePassword">Ha olvidado la contraseña</string>
     <string name="areYouNew">¿Eres nuev@?</string>
-    <string name="yes">Si</string>
-    <string name="no">No</string>
-    <string name="cancel">Cancelar</string>
-    <string name="enterEmail">Introduzca su email</string>
+    <string name="enterEmail">Introduzca su email:</string>
     <string name="enterUser">Introduzca su usuario</string>
     <string name="enterPassword">Introduzca su contraseña</string>
     <string name="enterRepeatPassword">Repita su contraseña</string>
     <string name="resetPassword">Reestablecer contraseña</string>
-    <string name="back">Atrás</string>
     <!-- Menu -->
     <string name="menu_myProfile">Mi perfil</string>
     <string name="menu_checkBox">Consultar box</string>
@@ -69,9 +72,14 @@
     <string name="classPlanning_sunday">Domingo</string>
     <!-- Class Day -->
     <string name="classDay_createClass">Crear clase</string>
-    <string name="classDay_separationHour">:</string>
+    <string name="classDay_separationHour">-</string>
     <string name="classDay_separationReserves">/</string>
     <string name="classDay_typeCrossfit">CrossFit</string>
+    <!-- Class Create -->
+    <string name="classCreate_title">Crear clase</string>
+    <string name="classCreate_startTime">Hora de inicio</string>
+    <string name="classCreate_endTime">Hora de fin</string>
+    <string name="classCreate_capacity">Aforo de la clase</string>
     <!-- Add Crossfitter -->
     <string name="addCrossfitter_title">Añadir crossfitero</string>
     <string name="addCrossfitter_username">Usuario:</string>
@@ -82,4 +90,16 @@
     <string name="updateBoxCrossfitter_title">Actualizar crossfitero</string>
     <string name="updateBoxCrossfitter_update">Guardar cambios</string>
     <string name="updateBoxCrossfitter_deleteFromBox">Eliminar del box</string>
+    <!-- Show & edit Class -->
+    <string name="showClass_title">Clase</string>
+    <string name="showClass_schedule">Horario:</string>
+    <string name="showClass_scheduleSeparator">-</string>
+    <string name="showClass_capacitySeparator">/</string>
+    <string name="showClass_capacity">Aforo:</string>
+    <string name="showClass_enrolled">Instritos</string>
+    <string name="showClass_enrrolledCrossfitters">Crossfiteros inscritos</string>
+    <!-- Show class Update -->
+    <string name="showClassUpdate_title">Actualizar clase</string>
+    <string name="showClassUpdate_deleteClass">Eliminar clase</string>
+    <string name="showClassUpdate_updateClass">Actualizar clase</string>
 </resources>
