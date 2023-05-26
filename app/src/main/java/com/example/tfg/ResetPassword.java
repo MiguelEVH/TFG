@@ -46,7 +46,7 @@ public class ResetPassword extends AppCompatActivity {
 
                 //Comprueba si el usuario ha introducido un email. Sino, avisa al usuario
                 if(editTextEmail.getText().toString().isEmpty()){
-                    Toast.makeText(ResetPassword.this, "Por favor, introduzca su email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResetPassword.this, R.string.pleaseEnterEmail, Toast.LENGTH_SHORT).show();
                 }else{
                     //Avisa de que el lenguaje es el español
                     mAuth.setLanguageCode("es");
@@ -54,19 +54,16 @@ public class ResetPassword extends AppCompatActivity {
                     mAuth.sendPasswordResetEmail(editTextEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-
                             //Hide the progressBar
                             progressBar.setVisibility(View.GONE);
-
                             //Avisa al usuario del resultado
                             if(task.isSuccessful()){
-                                Toast.makeText(ResetPassword.this, "Revise su email para reestablecer la contraseña", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ResetPassword.this, R.string.pleaseCheckYourEmailToRetrievePassword, Toast.LENGTH_SHORT).show();
                             }else{
-                                Toast.makeText(ResetPassword.this, "No se ha podido enviar el correo debido a un error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ResetPassword.this, R.string.emailCouldntNotBeSent, Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-
                 }
             }
         });
@@ -80,6 +77,5 @@ public class ResetPassword extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

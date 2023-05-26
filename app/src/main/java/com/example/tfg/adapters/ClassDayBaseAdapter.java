@@ -44,18 +44,18 @@ public class ClassDayBaseAdapter extends BaseAdapter {
         //Se genera la vista
         view = inflater.inflate(R.layout.activity_class_day_list_view, null);
         //Asigna las variables de la clase
-        TextView traningStarts = view.findViewById(R.id.classDay_start);
+        TextView trainingStarts = view.findViewById(R.id.classDay_start);
         TextView trainingEnds = view.findViewById(R.id.classDay_end);
         TextView trainingName = view.findViewById(R.id.classDay_classType);
         TextView trainingReserves = view.findViewById(R.id.classDay_reservesDone);
-        TextView traningCapacity = view.findViewById(R.id.classDay_totalReserves);
+        TextView trainingCapacity = view.findViewById(R.id.classDay_totalReserves);
 
-        //Da valores al item
-        traningStarts.setText(trainings.get(i).getTrainingStarts());
+        //Da valores a los items
+        trainingStarts.setText(trainings.get(i).getTrainingStarts());
         trainingEnds.setText(trainings.get(i).getTrainingEnds());
         trainingName.setText(trainings.get(i).getName());
         trainingReserves.setText(String.valueOf(trainings.get(i).getReservesDone()));
-        traningCapacity.setText(String.valueOf(trainings.get(i).getCapacity()));
+        trainingCapacity.setText(String.valueOf(trainings.get(i).getCapacity()));
 
         //Retorna la vista de la clase
         return view;

@@ -2,12 +2,10 @@ package com.example.tfg;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,7 +86,6 @@ public class PersonalBestUpdate extends AppCompatActivity {
         btnBack = findViewById(R.id.personalBestUpdate_btn_back);
         btnEdit = findViewById(R.id.personalBestUpdate_btn_personalBest_edit);
         btnSave = findViewById(R.id.personalBestUpdate_btn_personalBest_save);
-
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +94,7 @@ public class PersonalBestUpdate extends AppCompatActivity {
                 //Muestra el botón de guardar
                 btnSave.setVisibility(View.VISIBLE);
                 //Oscurece el fondo del texto del WOD
-                editTextExerciseWeight.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
+                editTextExerciseWeight.setBackgroundColor(getResources().getColor(R.color.darkGrey, activityTheme));
                 editTextExerciseWeight.setEnabled(true);
             }
         });
@@ -107,8 +104,9 @@ public class PersonalBestUpdate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PersonalBestRecord personalBestRecord = new PersonalBestRecord();
-                //Comprueba si el peso es válido
-                if(personalBestRecord.validWeight(Double.parseDouble(String.valueOf(editTextExerciseWeight.getText())))){
+                if(String.valueOf(editTextExerciseWeight.getText()).equals("")){
+                    Toast.makeText(PersonalBestUpdate.this, R.string.personalBest_nonValidWeight, Toast.LENGTH_SHORT).show();
+                } else if (personalBestRecord.validWeight(Double.parseDouble(String.valueOf(editTextExerciseWeight.getText())))){
                     //Oculta el botón de guardar
                     btnSave.setVisibility(View.GONE);
                     //Muestra el botón de editar
@@ -118,7 +116,7 @@ public class PersonalBestUpdate extends AppCompatActivity {
                     //Se actualiza la rm del crossfitero del ejercicio seleccionado
                     dbReference.setValue(Double.valueOf(String.valueOf(editTextExerciseWeight.getText())));
                 }else{
-                    Toast.makeText(PersonalBestUpdate.this, "Peso no válido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PersonalBestUpdate.this, R.string.personalBest_nonValidWeight, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -142,10 +140,9 @@ public class PersonalBestUpdate extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         //Coge el usuario actual
         fbUser = fbAuth.getCurrentUser();
-
         //Si no hay un usuario con sesión iniciada, vuelve a la pantalla de login.
         if(fbUser == null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), LogIn.class);
             startActivity(intent);
             finish();
         }

@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".CrossfittersManagementListView">
+    tools:context=".listviews.CrossfittersManagementListView">
 
     <TextView
         android:id="@+id/crosfittersManagementListView_username"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="crossfitter"
         android:textColor="@color/black"

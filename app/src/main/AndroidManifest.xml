@@ -21,33 +21,45 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="29">
         <activity
-            android:name=".CrossfittersListView"
+            android:name=".listviews.ShowClassListView"
+            android:exported="false" />
+        <activity
+            android:name=".ShowCrossffitersBaseAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".listviews.ReservationsListView"
+            android:exported="false" />
+        <activity
+            android:name=".Reservations"
+            android:exported="false" />
+        <activity
+            android:name=".listviews.CrossfittersListView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ShowClass"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ShowClassUpdate"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ClassCreate"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".ClassPlanningListView"
+            android:name=".listviews.ClassPlanningListView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".ClassDayListView"
+            android:name=".listviews.ClassDayListView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ClassDay"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
@@ -55,15 +67,15 @@
         <activity
             android:name=".UpdateBoxCrossfitter"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AddCrossfitter"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".CrossfittersManagementListView"
+            android:name=".listviews.CrossfittersManagementListView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ClassPlanning"
             android:exported="false"
@@ -77,7 +89,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PersonalBestListView"
+            android:name=".listviews.PersonalBestListView"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -85,7 +97,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TutorialsListView"
+            android:name=".listviews.TutorialsListView"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

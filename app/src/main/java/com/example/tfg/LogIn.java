@@ -75,41 +75,39 @@ public class LogIn extends AppCompatActivity {
 
                 //Muestra la progressbar
                 progressBar.setVisibility(View.VISIBLE);
-
+                //Coge el email y la contraseña
                 String email, password;
                 email = String.valueOf(editTextUser.getText());
                 password = String.valueOf(editTextPassword.getText());
-
                 //Comprueba que se han introducido los datos requeridos
                 if(TextUtils.isEmpty(email)){
-                    Toast.makeText(LogIn.this, "Introduzca su email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogIn.this, R.string.insertEmail, Toast.LENGTH_SHORT).show();
                     return;
                 }else if(TextUtils.isEmpty(password)) {
-                    Toast.makeText(LogIn.this, "Introduzca su contraseña", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogIn.this, R.string.insertPassword, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener((new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                //Hide the progressBar
-                                progressBar.setVisibility(View.GONE);
-
-                                if(task.isSuccessful()){
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }else{
-                                    Toast.makeText(LogIn.this, "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
-                                }
+                    .addOnCompleteListener((new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            //Oculta la progressBar
+                            progressBar.setVisibility(View.GONE);
+                            //Si el login es correcto, navega a la pantalla de inicio. Si no, avisa de error
+                            if(task.isSuccessful()){
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                Toast.makeText(LogIn.this, R.string.loginFailed, Toast.LENGTH_SHORT).show();
                             }
-                        }));
+                        }
+                    }));
             }
         });
 
-        //
+        //Navega a la vista de recuperar la contraseña
         textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

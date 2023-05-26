@@ -72,7 +72,6 @@ public class PersonalBest extends AppCompatActivity {
 
         //Recupera las marcas personales del usuario actual
         dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId+"/personalBestRecords");
-        //setPersonalBestRecord("cm_deadlift", 100);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -117,7 +116,6 @@ public class PersonalBest extends AppCompatActivity {
                 personalBestListView.setAdapter(customBaseAdapter);
                 personalBestListView.getAdapter();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -154,7 +152,6 @@ public class PersonalBest extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         //Coge el usuario actual
         fbUser = fbAuth.getCurrentUser();
-
         //Si no hay un usuario con sesión iniciada, vuelve a la pantalla de login.
         if(fbUser == null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -218,11 +215,5 @@ public class PersonalBest extends AppCompatActivity {
             }
         }
         return new String(stringBuilder);
-    }
-
-    public void setPersonalBestRecord(String exerciseId, double personalBestRecord){
-        //Se modifica el nuevo nombre de usuario en la base de datos
-        //dbReference = FirebaseDatabase.getInstance().getReference("Users");
-        dbReference.child(exerciseId).setValue(personalBestRecord);
     }
 }

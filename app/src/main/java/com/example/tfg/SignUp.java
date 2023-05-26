@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -90,8 +89,6 @@ public class SignUp extends AppCompatActivity {
             crossWOD.setVisibility(View.GONE);
         }
 
-
-
         //Conecta con los usuarios y boxes de la base de datos
         dbUsers = FirebaseDatabase.getInstance().getReference("Users");
         dbBox = FirebaseDatabase.getInstance().getReference("Boxes");
@@ -125,46 +122,41 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //Muestra la progressbar
                 progressBar.setVisibility(View.VISIBLE);
-
                 //Declara las variables y coge los valores del formulario
                 String username, email, password, repeatPassword;
-
                 username = String.valueOf(editTextUser.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 repeatPassword = String.valueOf(editTextRepeatPassword.getText());
-
                 //Comprueba que se han introducido los datos requeridos
                 if(!userEnteredCorrectly(username)){
-                    Toast.makeText(SignUp.this, "Introduzca un usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.enterUser, Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 }else if(!emailEnteredCorrectly(email)){
-                    Toast.makeText(SignUp.this, "Introduzca un email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.insertEmail, Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 } else if(TextUtils.isEmpty(password)) {
-                    Toast.makeText(SignUp.this, "Introduzca una contraseña", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.enterPassword, Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 }else if(TextUtils.isEmpty(repeatPassword)) {
-                    Toast.makeText(SignUp.this, "Repita la contraseña", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.enterRepeatPassword, Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 }else if(!validPassword(password, repeatPassword)){
-                    Toast.makeText(SignUp.this, "Repita la contraseña correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.pleaseEnterSamePassword, Toast.LENGTH_SHORT).show();
                     //Oculta la progressbar
                     progressBar.setVisibility(View.GONE);
                     return;
                 }
-
 
                 //Crea el usuario mediante email y password
                 auth.createUserWithEmailAndPassword(email, password)
@@ -173,7 +165,7 @@ public class SignUp extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if(task.isSuccessful()){
-                                    Toast.makeText(SignUp.this, "Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUp.this, R.string.userCreatedCorrectly, Toast.LENGTH_SHORT).show();
                                     //Usuario actual
                                     currentUser = auth.getCurrentUser();
                                     //Si es entrenador, le asigna un box que se creará posteriormente
@@ -201,7 +193,7 @@ public class SignUp extends AppCompatActivity {
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(SignUp.this, "No se ha podido crear el usuario", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(SignUp.this, R.string.userNonCreated, Toast.LENGTH_SHORT).show();
                                                 }
                                             });
 
@@ -214,15 +206,15 @@ public class SignUp extends AppCompatActivity {
                                 }else{
                                     //Oculta la progressbar
                                     progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(SignUp.this, "Ha habido un problema", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUp.this, R.string.problem, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-
             }
         });
     }
 
+    //Comprueba si se ha metido el usuario
     public boolean userEnteredCorrectly(String username){
         if(TextUtils.isEmpty(username)){
             return false;
@@ -254,5 +246,4 @@ public class SignUp extends AppCompatActivity {
             return false;
         }
     }
-
 }

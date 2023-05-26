@@ -1,8 +1,5 @@
 package com.example.tfg;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,17 +33,16 @@ public class VideoPlayer extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 //Carga el vídeo
                 youTubePlayer.loadVideo(workout);
-
                 //Reproduce el vídeo
                 youTubePlayer.play();
             }
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Toast.makeText(VideoPlayer.this, "No se ha podido reproducir el vídeo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VideoPlayer.this, R.string.videoPlayer_cantPlayVideo, Toast.LENGTH_SHORT).show();
             }
         };
-
+        //Inicializa el video de youtube pasandole la clave de la API
         youTubePlayerView.initialize("AIzaSyAecRvrqTbmguK_exRmMQBnMcDkppnMGXU", listener);
 
         //Listener que vuelve a la pantalla de tutoriales

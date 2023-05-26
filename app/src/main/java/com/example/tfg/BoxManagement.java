@@ -1,6 +1,5 @@
 package com.example.tfg;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,11 +11,6 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class BoxManagement extends AppCompatActivity {
 
@@ -42,6 +36,7 @@ public class BoxManagement extends AppCompatActivity {
         //Comprueba que el usuario está autenticado, sino, lo redirige a la pantalla de login
         checkLoggedUser();
 
+        //Coge los botones de la vista
         btnClassPlanning = findViewById(R.id.boxManagement_btn_classPlanning);
         btnManageCrossfiters = findViewById(R.id.boxManagement_btn_manageCrossfiters);
         btnBack = findViewById(R.id.boxManagement_btn_back);

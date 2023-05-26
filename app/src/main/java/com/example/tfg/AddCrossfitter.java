@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddCrossfitter extends AppCompatActivity {
 
-    DatabaseReference dbReference;
+    DatabaseReference dbReference, dbReferenceCredits;
     TextView toolbarTitle, usernameData, emailData;
     EditText feeData;
     Button btnBack, btnAddCrossfitter;
@@ -52,19 +53,25 @@ public class AddCrossfitter extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Coge la tarifa introducida
-                int fee = Integer.valueOf(String.valueOf(feeData.getText()));
-                //Referencia a las clases del usuario en la base de datos y se actualiza
-                dbReference = FirebaseDatabase.getInstance().getReference("Users/"+newCrossfitterId+"/fee");
-                dbReference.setValue(fee);
-                //Referencia al box del usuario y lo actualiza
-                dbReference = FirebaseDatabase.getInstance().getReference("Users/"+newCrossfitterId+"/boxId");
-                //Se actualiza la rm del crossfitero del ejercicio seleccionado
-                dbReference.setValue(userId+"_box");
-                //Vuelve a la activity de gestión de crossfiteros
-                Intent intent = new Intent(getApplicationContext(), CrossfittersManagement.class);
-                intent.putExtra("userId", userId);
-                startActivity(intent);
-                finish();
+                if(String.valueOf(feeData.getText()).equals("")){
+                    Toast.makeText(AddCrossfitter.this, R.string.addCrossfitter_insertWeekClasses, Toast.LENGTH_SHORT).show();
+                }else{
+                    int fee = Integer.valueOf(String.valueOf(feeData.getText()));
+                    //Referencia a las clases del usuario en la base de datos y se actualiza
+                    dbReference = FirebaseDatabase.getInstance().getReference("Users/"+newCrossfitterId+"/fee");
+                    dbReference.setValue(fee);
+                    //Referencia a las reservas disponibles del usuario
+                    dbReference = FirebaseDatabase.getInstance().getReference("Users/"+newCrossfitterId+"/availableCredits");
+                    dbReference.setValue(fee);
+                    //Referencia al box del usuario y lo actualiza
+                    dbReference = FirebaseDatabase.getInstance().getReference("Users/"+newCrossfitterId+"/boxId");
+                    dbReference.setValue(userId+"_box");
+                    //Vuelve a la activity de gestión de crossfiteros
+                    Intent intent = new Intent(getApplicationContext(), CrossfittersManagement.class);
+                    intent.putExtra("userId", userId);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

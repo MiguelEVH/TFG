@@ -74,7 +74,6 @@ public class CrossfittersManagement extends AppCompatActivity{
                     user.setUsername(child.child("username").getValue(String.class));
                     user.setBoxId(child.child("boxId").getValue(String.class));
                     user.setEmail(child.child("email").getValue(String.class));
-
                     //Comprueba si es del mismo box. Si lo es lo agrega a los crossfiteros del box
                     if(user.getBoxId().equals(userId+"_box")){
                         user.setFee(Long.valueOf((Long) child.child("fee").getValue()).intValue());
@@ -88,13 +87,12 @@ public class CrossfittersManagement extends AppCompatActivity{
                 crosfittersListView.setAdapter(customBaseAdapter);
                 crosfittersListView.getAdapter();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
-        //Listener que abre el videotutorial del ejercicio que seleccione el usuario
+        //Listener en el que se pueden seleccionar los crossfiteros del box
         crosfittersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -123,7 +121,7 @@ public class CrossfittersManagement extends AppCompatActivity{
                     if(allCrossfitters.get(i).getEmail().equals(String.valueOf(newCrossfitterEmail.getText()))){
                         //Toast.makeText(CrossfittersManagement.this, "El crossfitero existe: " + newCrossfitterEmail.getText(), Toast.LENGTH_SHORT).show();
                         if(allCrossfitters.get(i).getBoxId().equals(userId+"_box")){
-                            Toast.makeText(CrossfittersManagement.this, "El crossfitero ya pertenece al box", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CrossfittersManagement.this, R.string.crossfittersManagement_userWithAlreadyABox, Toast.LENGTH_SHORT).show();
                         }else{
                             //Si se ha encontrado al crossfitero y no forma parte del box, navega a la activity de añadir crossfitero.
                             Intent intent = new Intent(getApplicationContext(), AddCrossfitter.class);
@@ -140,7 +138,7 @@ public class CrossfittersManagement extends AppCompatActivity{
                 }
                 //Si no se ha encontrado, avisa del error
                 if(!found){
-                    Toast.makeText(CrossfittersManagement.this, "No se encuentra un crossfitero con el email: " + newCrossfitterEmail.getText(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CrossfittersManagement.this, R.string.crossfittersManagement_userNotFoundEmail + "" + newCrossfitterEmail.getText(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

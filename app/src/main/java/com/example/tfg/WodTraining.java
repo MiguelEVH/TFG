@@ -6,8 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +16,6 @@ import android.widget.Toast;
 
 import com.example.tfg.classes.Box;
 import com.example.tfg.classes.User;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,10 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class WodTraining extends AppCompatActivity {
 
@@ -75,7 +66,7 @@ public class WodTraining extends AppCompatActivity {
 
         //Muestra el entrenamiento del día. Para ello, primero comprueba si el usuario tiene box
         dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId);
-        dbReference.addValueEventListener(new ValueEventListener() {
+        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot child : snapshot.getChildren()) {
@@ -83,13 +74,10 @@ public class WodTraining extends AppCompatActivity {
                     User currentUser = new User();
                     if(child.getKey().equals("boxId")){
                         currentUser.setBoxId(String.valueOf(child.getValue()));
-                        Toast.makeText(WodTraining.this, "BoxId: " + currentUser.getBoxId(), Toast.LENGTH_SHORT).show();
-
                         //Si el usuario tiene un box, coge la dirección
-                        if(String.valueOf(child.getValue()) == null) {
+                        if(String.valueOf(child.getValue()).isEmpty()) {
                             //Si no tiene box, muestra el mensaje
-                            wodText.setText(getResources().getText(R.string.checkWod_noBox));
-                            Toast.makeText(WodTraining.this, "No tiene box", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WodTraining.this, R.string.checkWod_userWithoutBox, Toast.LENGTH_SHORT).show();
                         }else{
                             //Se hace referencia al box del usuario
                             dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
@@ -108,7 +96,6 @@ public class WodTraining extends AppCompatActivity {
                             });
                         }
                     }
-
                 }
             }
             @Override

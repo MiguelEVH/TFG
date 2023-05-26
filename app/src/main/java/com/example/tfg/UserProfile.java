@@ -2,11 +2,7 @@ package com.example.tfg;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,7 +52,7 @@ public class UserProfile extends AppCompatActivity {
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.profile_title);
 
-        //Variables
+        //Variables de la vista
         user = findViewById(R.id.profile_username);
         email = findViewById(R.id.profile_email_data);
         box = findViewById(R.id.profile_box_data);
@@ -83,7 +79,6 @@ public class UserProfile extends AppCompatActivity {
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 //Coge los datos del usuario
                 User currentUser = new User();
                 for(DataSnapshot child : snapshot.getChildren()) {
@@ -100,7 +95,6 @@ public class UserProfile extends AppCompatActivity {
                         //Comprueba que tiene box
                         if(!String.valueOf(child.getValue()).isEmpty()){
                             currentUser.setBoxId(String.valueOf(child.getValue()));
-                            //Coge el nombre del box
                             //Recupera el nombre del box
                             dbBoxReference = FirebaseDatabase.getInstance().getReference("Boxes/"+currentUser.getBoxId());
                             dbBoxReference.addValueEventListener(new ValueEventListener() {
@@ -112,13 +106,11 @@ public class UserProfile extends AppCompatActivity {
                                         box.setText(dbBox.getName());
                                     }
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                 }
                             });
                         }
-
                     }
                 }
                 //Damos valor a los TextView
@@ -127,7 +119,6 @@ public class UserProfile extends AppCompatActivity {
                 contractedClasses.setText(String.valueOf(currentUser.getFee()));
                 availableClasses.setText(String.valueOf(currentUser.getAvailableCredits()));
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -150,7 +141,7 @@ public class UserProfile extends AppCompatActivity {
                 //Muestra el botón de guardar
                 btnSaveUsername.setVisibility(View.VISIBLE);
                 //Oscurece el fondo del texto del WOD
-                user.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
+                user.setBackgroundColor(getResources().getColor(R.color.darkGrey, activityTheme));
                 user.setEnabled(true);
             }
         });
@@ -159,17 +150,21 @@ public class UserProfile extends AppCompatActivity {
         btnSaveUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Oculta el botón de guardar
-                btnSaveUsername.setVisibility(View.GONE);
-                //Muestra el botón de editar
-                btnEditUsername.setVisibility(View.VISIBLE);
-                user.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
-                user.setEnabled(false);
-                //Se modifica el nuevo nombre de usuario en la base de datos
-                dbReference = FirebaseDatabase.getInstance().getReference("Users");
-                dbReference.child(userId).child("username").setValue(String.valueOf(user.getText()));
+                //Comprueba que el username es válido
+                if(String.valueOf(user.getText()).length() < 6){
+                    Toast.makeText(UserProfile.this, R.string.profile_nameMustHaveMinCharacters, Toast.LENGTH_LONG).show();
+                }else{
+                    //Oculta el botón de guardar
+                    btnSaveUsername.setVisibility(View.GONE);
+                    //Muestra el botón de editar
+                    btnEditUsername.setVisibility(View.VISIBLE);
+                    user.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
+                    user.setEnabled(false);
+                    //Se modifica el nuevo nombre de usuario en la base de datos
+                    dbReference = FirebaseDatabase.getInstance().getReference("Users");
+                    dbReference.child(userId).child("username").setValue(String.valueOf(user.getText()));
+                }
             }
         });
-
     }
 }

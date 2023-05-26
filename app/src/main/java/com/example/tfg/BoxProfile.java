@@ -9,7 +9,6 @@ import android.content.res.Resources;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,7 +59,7 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
         setSupportActionBar(toolbar);
         //Se pone el título de la activity
         toolbarTitle = findViewById(R.id.toolbar_title);
-        toolbarTitle.setText(R.string.profile_title);
+        toolbarTitle.setText(R.string.profilebox_title);
 
         //Se coge la id del crossfitero
         userId = getIntent().getStringExtra("userId");
@@ -141,7 +140,7 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                 //Muestra el botón de guardar
                 btnSaveBoxName.setVisibility(View.VISIBLE);
                 //Clarea el fondo del texto del WOD
-                boxName.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
+                boxName.setBackgroundColor(getResources().getColor(R.color.darkGrey, activityTheme));
                 boxName.setEnabled(true);
             }
         });
@@ -150,15 +149,20 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
         btnSaveBoxName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Oculta el botón de guardar
-                btnSaveBoxName.setVisibility(View.GONE);
-                //Muestra el botón de editar
-                btnEditBoxName.setVisibility(View.VISIBLE);
-                boxName.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
-                boxName.setEnabled(false);
-                //Se modifica el nuevo nombre del box en la base de datos
-                dbReference = FirebaseDatabase.getInstance().getReference("Boxes");
-                dbReference.child(fbUser.getUid()+"_box").child("name").setValue(String.valueOf(boxName.getText()));
+                //Comprueba que se ha introducido una dirección
+                if(String.valueOf(boxName.getText()).length() <= 0){
+                    Toast.makeText(BoxProfile.this, R.string.profilebox_insertBoxName, Toast.LENGTH_LONG).show();
+                }else{
+                    //Oculta el botón de guardar
+                    btnSaveBoxName.setVisibility(View.GONE);
+                    //Muestra el botón de editar
+                    btnEditBoxName.setVisibility(View.VISIBLE);
+                    boxName.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
+                    boxName.setEnabled(false);
+                    //Se modifica el nuevo nombre del box en la base de datos
+                    dbReference = FirebaseDatabase.getInstance().getReference("Boxes");
+                    dbReference.child(fbUser.getUid()+"_box").child("name").setValue(String.valueOf(boxName.getText()));
+                }
             }
         });
 
@@ -169,7 +173,7 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                 btnSaveBoxAddress.setVisibility(View.VISIBLE);
                 //Oculta el botón de guardar
                 btnEditBoxAddress.setVisibility(View.GONE);
-                boxAddress.setBackgroundColor(getResources().getColor(R.color.white, activityTheme));
+                boxAddress.setBackgroundColor(getResources().getColor(R.color.darkGrey, activityTheme));
                 boxAddress.setEnabled(true);
             }
         });
@@ -177,15 +181,20 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
         btnSaveBoxAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Muestra el botón de editar
-                btnEditBoxAddress.setVisibility(View.VISIBLE);
-                //Oculta el botón de guardar
-                btnSaveBoxAddress.setVisibility(View.GONE);
-                boxAddress.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
-                boxAddress.setEnabled(false);
-                //Se modifica el nuevo nombre de usuario en la base de datos
-                dbReference = FirebaseDatabase.getInstance().getReference("Boxes");
-                dbReference.child(fbUser.getUid()+"_box").child("address").setValue(String.valueOf(boxAddress.getText()));
+                //Comprueba que se ha introducido una dirección
+                if(String.valueOf(boxAddress.getText()).length() <= 0){
+                    Toast.makeText(BoxProfile.this, R.string.profilebox_insertBoxAddress, Toast.LENGTH_LONG).show();
+                }else{
+                    //Muestra el botón de editar
+                    btnEditBoxAddress.setVisibility(View.VISIBLE);
+                    //Oculta el botón de guardar
+                    btnSaveBoxAddress.setVisibility(View.GONE);
+                    boxAddress.setBackgroundColor(getResources().getColor(R.color.hollow, activityTheme));
+                    boxAddress.setEnabled(false);
+                    //Se modifica el nuevo nombre de usuario en la base de datos
+                    dbReference = FirebaseDatabase.getInstance().getReference("Boxes");
+                    dbReference.child(fbUser.getUid()+"_box").child("address").setValue(String.valueOf(boxAddress.getText()));
+                }
             }
         });
 
@@ -229,12 +238,12 @@ public class BoxProfile extends AppCompatActivity implements OnMapReadyCallback 
                             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                             try {
                                 if(box.getAddress() == null){
-                                    Toast.makeText(BoxProfile.this, "No está adscrito a un box", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(BoxProfile.this, R.string.profilebox_userNotEnrolled, Toast.LENGTH_SHORT).show();
                                 }else{
                                     List<Address> addressList = geocoder.getFromLocationName(box.getAddress(), 1);
                                     //Si la dirección no es válida, avisa del error
                                     if(addressList.isEmpty()){
-                                        Toast.makeText(BoxProfile.this, "No se han podido coger las coordenadas de la localización del box", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(BoxProfile.this, R.string.profilebox_problemWithCoordinates, Toast.LENGTH_SHORT).show();
                                     }else{
                                         //Coge las coordenadas del box
                                         LatLng boxCoordinates = new LatLng(addressList.get(0).getLatitude(), addressList.get(0).getLongitude());

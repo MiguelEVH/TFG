@@ -5,21 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".listviews.TutorialsListView">
-
-    <ImageView
-        android:id="@+id/tutorials_workoutImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+    tools:context=".listviews.ShowClassListView">
 
     <TextView
-        android:id="@+id/tutorials_workoutName"
+        android:id="@+id/showClassListView_username"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_height="30dp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="tutorial"
+        android:text="crossfitter"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="14dp" />
 
 </RelativeLayout>

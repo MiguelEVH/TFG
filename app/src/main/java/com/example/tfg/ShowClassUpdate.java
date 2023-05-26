@@ -19,7 +19,6 @@ import com.example.tfg.classes.Training;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Calendar;
 import java.util.Locale;
 
 public class ShowClassUpdate extends AppCompatActivity {
@@ -138,7 +137,7 @@ public class ShowClassUpdate extends AppCompatActivity {
                 dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+userId+"_box"+"/classes/" + dayOfWeekNumber + "/" + trainingId);
                 //Elimina la clase
                 dbReference.removeValue();
-                Toast.makeText(ShowClassUpdate.this, "Se ha eliminado la clase", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShowClassUpdate.this, R.string.showClassUpdate_deletedClass, Toast.LENGTH_SHORT).show();
                 //Cambia de activity
                 Intent intent = new Intent(getApplicationContext(), ClassDay.class);
                 intent.putExtra("dayOfWeekName", dayOfWeekName);
@@ -156,7 +155,7 @@ public class ShowClassUpdate extends AppCompatActivity {
             public void onClick(View view) {
                 //Comprueba que se ha introducido un aforo
                 if(Integer.valueOf(String.valueOf(etCapacity.getText())) == null){
-                    Toast.makeText(ShowClassUpdate.this, "Introduzca el aforo de la clase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShowClassUpdate.this, R.string.showClassUpdate_insertCapacity, Toast.LENGTH_SHORT).show();
                 }else{
                     //Se crea el entrenamiento
                     Training newTraining = new Training();
@@ -179,8 +178,8 @@ public class ShowClassUpdate extends AppCompatActivity {
             }
         });
 
-        btnBack = findViewById(R.id.showClassUpdate_btn_back);
         //Listener que vuelve a la pantalla de gestionar box
+        btnBack = findViewById(R.id.showClassUpdate_btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

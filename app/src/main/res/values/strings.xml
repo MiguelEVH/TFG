@@ -7,7 +7,7 @@
     <string name="cancel">Cancelar</string>
     <string name="user">Usuario</string>
     <string name="back">Atrás</string>
-    <!-- LogIn & SignUp -->
+    <!-- LogIn, SignUp & ResetPassword-->
     <string name="login">Iniciar sesión</string>
     <string name="signUp">Crear cuenta</string>
     <string name="email">Email</string>
@@ -21,33 +21,50 @@
     <string name="enterUser">Introduzca su usuario</string>
     <string name="enterPassword">Introduzca su contraseña</string>
     <string name="enterRepeatPassword">Repita su contraseña</string>
+    <string name="pleaseEnterSamePassword">Por favor, introduzca la misma contraseña</string>
+    <string name="userCreatedCorrectly">Se ha registrado correctamente</string>
+    <string name="userNonCreated">No se ha podido crear el usuario</string>
+    <string name="problem">Ha habido un problema</string>
     <string name="resetPassword">Reestablecer contraseña</string>
+    <string name="insertEmail">Introduzca su email</string>
+    <string name="insertPassword">Introduzca su contraseña</string>
+    <string name="loginFailed">No se ha podido iniciar sesión</string>
+    <string name="pleaseEnterEmail">Por favor, introduzca su email</string>
+    <string name="pleaseCheckYourEmailToRetrievePassword">Revise su email para reestablecer la contraseña</string>
+    <string name="emailCouldntNotBeSent">No se ha podido enviar el correo debido a un error</string>
     <!-- Menu -->
     <string name="menu_myProfile">Mi perfil</string>
     <string name="menu_checkBox">Consultar box</string>
     <string name="menu_logOut">Cerrar sesión</string>
     <string name="menu_boxAddress">Dirección del box</string>
-    <!-- Inicio -->
+    <!-- Main activity -->
     <string name="main_title">Inicio</string>
     <string name="main_manageBox">Gestionar box</string>
     <string name="main_checkWod">Ver WOD</string>
     <string name="main_reservations">Reservas</string>
     <string name="main_personalBest">Marcas personales</string>
     <string name="main_tutorials">Tutoriales</string>
-    <!-- Perfil usuario -->
+    <!-- User Profile -->
     <string name="profile_title">Perfil</string>
     <string name="profile_user">Usuario:</string>
     <string name="profile_email">Email:</string>
     <string name="profile_box">Box:</string>
     <string name="profile_contractedClasses">Clases semanales contratadas:</string>
     <string name="profile_availableClasses">Clases semanales disponibles:</string>
-    <!-- Perfil box -->
+    <string name="profile_nameMustHaveMinCharacters">El nombre debe tener como mínimo 6 carácteres</string>
+    <!-- Box profile -->
+    <string name="profilebox_title">Perfil del box</string>
     <string name="profilebox_name">Nombre:</string>
     <string name="profilebox_address">Dirección:</string>
-    <!-- Comprobar entramiento del día -->
+    <string name="profilebox_insertBoxName">Introduzca el nombre del box</string>
+    <string name="profilebox_insertBoxAddress">Introduzca la dirección del box</string>
+    <string name="profilebox_userNotEnrolled">No está adscrito a un box</string>
+    <string name="profilebox_problemWithCoordinates">No se han podido coger las coordenadas de la localización del box</string>
+    <!-- Wod training -->
     <string name="checkWod_title">WOD del box</string>
     <string name="checkWod_noBox">No está adscrito a un box</string>
-    <!-- Gestión del box -->
+    <string name="checkWod_userWithoutBox">No está adscrito a un box</string>
+    <!-- Box management -->
     <string name="boxManagement_title">Gestión del box</string>
     <string name="boxManagement_classPlannig">Planificar clases</string>
     <string name="boxManagement_manageCrossfiters">Gestionar crossfiteros</string>
@@ -57,10 +74,13 @@
     <string name="personalBest_title">Marcas personales</string>
     <string name="personalBestUpdate_rm">Repetición Máxima:</string>
     <string name="personalBestUpdate_rmMeasure">Kg</string>
-    <!-- Box Manage Crossfiters -->
+    <string name="personalBest_nonValidWeight">Peso no válido</string>
+    <!-- Crossfiters Management -->
     <string name="crossfittersManagement_title">Gestión de crossfiteros</string>
     <string name="crossfittersManagement_addCrossfiter">Añadir crossfitero</string>
     <string name="crossfittersManagement_newUserEmail">Email del nuevo usuario</string>
+    <string name="crossfittersManagement_userWithAlreadyABox">El crossfitero ya pertenece al box</string>
+    <string name="crossfittersManagement_userNotFoundEmail">No se encuentra un crossfitero con el email: </string>
     <!-- Class Planning -->
     <string name="classPlanning_title">Planificar clases</string>
     <string name="classPlanning_monday">Lunes</string>
@@ -75,31 +95,51 @@
     <string name="classDay_separationHour">-</string>
     <string name="classDay_separationReserves">/</string>
     <string name="classDay_typeCrossfit">CrossFit</string>
+    <string name="classDay_noAvailableClasses">No hay clases disponibles</string>
     <!-- Class Create -->
     <string name="classCreate_title">Crear clase</string>
     <string name="classCreate_startTime">Hora de inicio</string>
     <string name="classCreate_endTime">Hora de fin</string>
     <string name="classCreate_capacity">Aforo de la clase</string>
+    <string name="classCreate_insertClassHour">Introduzca la hora de la clase</string>
+    <string name="classCreate_insertClassCapacity">Introduzca el aforo de la clase</string>
     <!-- Add Crossfitter -->
     <string name="addCrossfitter_title">Añadir crossfitero</string>
     <string name="addCrossfitter_username">Usuario:</string>
     <string name="addCrossfitter_email">Email:</string>
     <string name="addCrossfitter_fee">Clases semanales:</string>
     <string name="addCrossfitter_addCrossfitter">Añadir crossfitero</string>
+    <string name="addCrossfitter_insertWeekClasses">Inserte las clases semanales</string>
     <!-- Update crossfitter -->
     <string name="updateBoxCrossfitter_title">Actualizar crossfitero</string>
     <string name="updateBoxCrossfitter_update">Guardar cambios</string>
     <string name="updateBoxCrossfitter_deleteFromBox">Eliminar del box</string>
-    <!-- Show & edit Class -->
+    <string name="updateBoxCrossfitter_coachCantBeDeleted">No se puede eliminar al entrenador de su box</string>
+    <string name="updateBoxCrossfitter_deletedCrossfitter">Crossfitero eliminado:</string>
+    <string name="updateBoxCrossfitter_updatedFee">Tarifa actualizada</string>
+    <!-- Show Class -->
     <string name="showClass_title">Clase</string>
     <string name="showClass_schedule">Horario:</string>
     <string name="showClass_scheduleSeparator">-</string>
     <string name="showClass_capacitySeparator">/</string>
     <string name="showClass_capacity">Aforo:</string>
-    <string name="showClass_enrolled">Instritos</string>
+    <string name="showClass_enrolled">Inscritos</string>
     <string name="showClass_enrrolledCrossfitters">Crossfiteros inscritos</string>
+    <string name="showClass_reserve">Reservar</string>
+    <string name="showClass_cancelReservation">Cancelar reserva</string>
+    <string name="showClass_fullCapacity">Aforo completado</string>
+    <string name="showClass_enrolledInTraining">Ha reservado la clase</string>
+    <string name="showClass_trainingCreditsSoldOut">Ha agotado las reservas semanales</string>
+    <string name="showClass_trainingCancelled">Se ha cancelado la reserva</string>
     <!-- Show class Update -->
     <string name="showClassUpdate_title">Actualizar clase</string>
     <string name="showClassUpdate_deleteClass">Eliminar clase</string>
     <string name="showClassUpdate_updateClass">Actualizar clase</string>
+    <string name="showClassUpdate_deletedClass">Se ha eliminado la clase</string>
+    <string name="showClassUpdate_insertCapacity">Introduzca el aforo de la clase</string>
+    <!-- Reservations -->
+    <string name="reservations_title">Reservas</string>
+    <string name="reservations_userNonEnrolledInBox">No está adscrito a un box</string>
+    <string name="reservations_nonAvailableTrainings">No hay clases disponibles</string>
+    <string name="videoPlayer_cantPlayVideo">No se ha podido reproducir el vídeo</string>
 </resources>

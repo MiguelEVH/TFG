@@ -59,12 +59,12 @@ public class UpdateBoxCrossfitter extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(userId.equals(crossfitter.getId())){
-                    Toast.makeText(UpdateBoxCrossfitter.this, "No se puede eliminar al entrenador de su box", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateBoxCrossfitter.this, R.string.updateBoxCrossfitter_coachCantBeDeleted, Toast.LENGTH_SHORT).show();
                 }else{
                     //Referencia a las clases del usuario en la base de datos y elimina la referencia al box
                     dbReference = FirebaseDatabase.getInstance().getReference("Users/"+crossfitter.getId()+"/boxId");
-                    dbReference.removeValue();
-                    Toast.makeText(UpdateBoxCrossfitter.this, "Crossfitero eliminado: " + crossfitter.getUsername(), Toast.LENGTH_SHORT).show();
+                    dbReference.setValue("");
+                    Toast.makeText(UpdateBoxCrossfitter.this, R.string.updateBoxCrossfitter_deletedCrossfitter + " " + crossfitter.getUsername(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), CrossfittersManagement.class);
                     intent.putExtra("userId", userId);
                     startActivity(intent);
@@ -82,7 +82,10 @@ public class UpdateBoxCrossfitter extends AppCompatActivity {
                 //Referencia a las clases del usuario en la base de datos y se actualiza
                 dbReference = FirebaseDatabase.getInstance().getReference("Users/"+crossfitter.getId()+"/fee");
                 dbReference.setValue(crossfitter.getFee());
-                Toast.makeText(UpdateBoxCrossfitter.this, "Tarifa actualizada", Toast.LENGTH_SHORT).show();
+                //Referencia a las reservas disponibles del usuario
+                dbReference = FirebaseDatabase.getInstance().getReference("Users/"+crossfitter.getId()+"/availableCredits");
+                dbReference.setValue(crossfitter.getFee());
+                Toast.makeText(UpdateBoxCrossfitter.this, R.string.updateBoxCrossfitter_updatedFee, Toast.LENGTH_SHORT).show();
             }
         });
 

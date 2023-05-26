@@ -1,14 +1,18 @@
-package com.example.tfg;
+package com.example.tfg.listviews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ClassDayListView extends AppCompatActivity {
+import com.example.tfg.R;
+
+public class ClassPlanningListView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_day_list_view);
+        setContentView(R.layout.activity_class_planning_list_view);
+
+
     }
 }

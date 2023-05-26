@@ -49,16 +49,13 @@ public class ClassDay extends AppCompatActivity {
         userId = getIntent().getStringExtra("userId");
         toolbarTitle.setText(dayOfWeekName);
 
-        //Toast.makeText(ClassDay.this, dayOfWeekName + " " + dayOfWeekNumber, Toast.LENGTH_SHORT).show();
-
         //Recupera las clases del día
         dbReference = FirebaseDatabase.getInstance().getReference("Boxes/"+userId+"_box/classes/"+dayOfWeekNumber);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Recorre los días
+                //Recorre los entrenamientos
                 for(DataSnapshot child : snapshot.getChildren()) {
-                    //Toast.makeText(ClassDay.this, child.getKey(), Toast.LENGTH_SHORT).show();
                     Training training = new Training();
                     training.setId(child.getKey());
                     training.setName(String.valueOf(child.child("name").getValue()));
@@ -70,7 +67,7 @@ public class ClassDay extends AppCompatActivity {
                     trainings.add(training);
                 }
                 if(trainings.isEmpty()){
-                    Toast.makeText(ClassDay.this, "No hay clases disponibles", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClassDay.this, R.string.classDay_noAvailableClasses, Toast.LENGTH_SHORT).show();
                 }else{
                     //Ordena los entrenamientos por hora de inicio
                     Collections.sort(trainings, (o1, o2) -> o1.getTrainingStarts().compareTo(o2.getTrainingStarts()));
@@ -105,7 +102,6 @@ public class ClassDay extends AppCompatActivity {
             }
         });
 
-
         //Listener que crea una clase
         createClassDay = findViewById(R.id.classDay_btn_createClass);
         createClassDay.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +116,6 @@ public class ClassDay extends AppCompatActivity {
                 finish();
             }
         });
-
 
         btnBack = findViewById(R.id.classDay_btn_back);
         //Listener que vuelve a la pantalla de gestionar box

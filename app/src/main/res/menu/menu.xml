@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:title="@string/menu_myProfile"
         android:id="@+id/menu_my_profile"/>
     <item android:title="@string/menu_checkBox"
@@ -8,5 +7,5 @@
     <item android:title="@string/menu_logOut"
         android:id="@+id/menu_log_out"/>
     <item android:title="@string/cancel"
-        android:id="@+id/menu_cancelar"/>
+        android:id="@+id/menu_cancel"/>
 </menu>

@@ -65,8 +65,8 @@ public class ClassPlanning extends AppCompatActivity {
             }
         });
 
-        btnBack = findViewById(R.id.classPlanning_btn_back);
         //Listener que vuelve a la pantalla de gestionar box
+        btnBack = findViewById(R.id.classPlanning_btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

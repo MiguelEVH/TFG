@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".listviews.ClassDayListView">
+    tools:context=".listviews.ReservationsListView">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/classDay_start"
+            android:id="@+id/reservations_start"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
@@ -23,7 +23,7 @@
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/classDay_separationHour"
+            android:id="@+id/reservations_separationHour"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginLeft="5dp"
@@ -33,7 +33,7 @@
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/classDay_end"
+            android:id="@+id/reservations_end"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginLeft="5dp"
@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/classDay_classType"
+        android:id="@+id/reservations_classType"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
@@ -62,7 +62,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/classDay_reservesDone"
+            android:id="@+id/reservations_reservesDone"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginRight="5dp"
@@ -72,7 +72,7 @@
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/classDay_separatorReserves"
+            android:id="@+id/reservations_separatorReserves"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginRight="5dp"
@@ -82,7 +82,7 @@
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/classDay_totalReserves"
+            android:id="@+id/reservations_totalReserves"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginRight="30dp"

@@ -103,9 +103,11 @@ public class ClassCreate extends AppCompatActivity {
         createClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(capacity.getText().equals("")){
-                    Toast.makeText(ClassCreate.this, "Introduzca el aforo de la clase", Toast.LENGTH_SHORT).show();
+                //Comprueba si se ha rellenado el formulario
+                if((btnStartTime.getText() == null) || (btnEndTime.getText() == null)){
+                    Toast.makeText(ClassCreate.this, R.string.classCreate_insertClassHour, Toast.LENGTH_SHORT).show();
+                } else if (String.valueOf(capacity.getText()).equals("")) {
+                    Toast.makeText(ClassCreate.this, R.string.classCreate_insertClassCapacity, Toast.LENGTH_SHORT).show();
                 }else{
                     //Se crea el id de la clase
                     Calendar calendar = Calendar.getInstance();
@@ -131,7 +133,6 @@ public class ClassCreate extends AppCompatActivity {
             }
         });
 
-
         btnBack = findViewById(R.id.classCreate_btn_back);
         //Listener que vuelve a la pantalla de clases del día
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +146,6 @@ public class ClassCreate extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     //Variable que arregla el tiempo para que tenga 2 cifras en string

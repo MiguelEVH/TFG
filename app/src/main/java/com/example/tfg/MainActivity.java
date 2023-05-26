@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tfg.classes.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference dbReference;
     Button btnManageBox, btnCheckWod, btnReservations, btnPersonalBest, btnTutorials;
     TextView toolbarTitle;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Botón que navega a la activity de reservas
+        btnReservations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Reservations.class);
+                intent.putExtra("userId", fbUser.getUid());
+                startActivity(intent);
+            }
+        });
+
         //Botón que navega a la activity de ver el las marcas personales del crossfitero
         btnPersonalBest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     //Se declara y crea el menú
@@ -124,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.menu_cancelar: //No hace nada.
+            case R.id.menu_cancel: //No hace nada.
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -135,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         //Coge el usuario actual
         fbUser = fbAuth.getCurrentUser();
-
+        userId = fbUser.getUid();
         //Si no hay un usuario con sesión iniciada, vuelve a la pantalla de login.
         if(fbUser == null){
             Intent intent = new Intent(getApplicationContext(), LogIn.class);
@@ -147,13 +156,21 @@ public class MainActivity extends AppCompatActivity {
     //Método las funcionalidades que puede realizar el usuario según su rol
     public void checkRol(){
         //Comprueba el rol del usuario.
-        dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        dbReference = FirebaseDatabase.getInstance().getReference("Users/"+userId);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Si es entrenador, muestra el botón de gestionar box
-                if(snapshot.child(fbUser.getUid()).child("coach").getValue(boolean.class)){
-                    btnManageBox.setVisibility(View.VISIBLE);
+                //Recorre los crossfiteros de la aplicación
+                for(DataSnapshot child : snapshot.getChildren()){
+                    //Coge los datos del crossfitero
+                    if(child.getKey().equals("coach")){
+                        User user = new User();
+                        user.setCoach(Boolean.parseBoolean(String.valueOf(child.getValue())));
+                        //Si es entrenador, muestra el botón de gestionar box
+                        if(user.isCoach()){
+                            btnManageBox.setVisibility(View.VISIBLE);
+                        }
+                    }
                 }
             }
             @Override
